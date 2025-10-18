@@ -3,7 +3,7 @@ import { readFile, stat } from "fs/promises";
 import { join, extname } from "path";
 
 const PORT = 8080;
-const ROOT = join(process.cwd(), "www");
+const ROOT = join(process.cwd(), "docs");
 
 // Types MIME de base
 const MIME = {

@@ -12,7 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const SRC = join(__dirname, "src/www");
-const OUT = join(__dirname, "www");
+const OUT = join(__dirname, "docs");
 
 // HTML template
 const layoutFile = join(__dirname, "src/views/layout.ejs");
