@@ -1,6 +1,5 @@
-# Le dernier théorème de Fermat
 
----
+# Le dernier théorème de Fermat
 
 ## Motivation
 
@@ -14,7 +13,63 @@ Mon souhait est que cette preuve soit accessible à un public non-expert intére
 
 ## Introduction aux points rationnels sur le cercle unitaire
 
+Les points rationnels sur le cercle unitaire $x^2 + y^2 = 1$ permettent de trouver les solutions à l'équation diophantine $u^2 + v^2 = w^2$. En effet si $x = \frac{a}{b}$ et $y = \frac{c}{d}$, alors $(ad)^2 + (bc)^2 = (bd)^2$.
+
+Une méthode systématique pour trouver des solutions à l'équation diophantine $u^2 + v^2 = w^2$ consiste à prendre un couple de nombres entiers strictement positifs $(a, b) \in \mathbb{N}^2$ et à les envoyer dans les nombres complexes par la transformation $(a,b) \mapsto a + bi$. Posons $x = a + bi$. La norme de $x$ est $\sqrt{a^2 + b^2}$. En élevant $x$ au carré, on obtient l'assurance que la norme de $x^2$ est entière, égale à $a^2 + b^2$. Celà fonctionne car la norme de $x$ élevée au carré est en fait son déterminant. 
+
+Voyons comment celà fonctionne. On peut représenter $i$ par la matrice 
+
+$$
+J = \begin{pmatrix}
+0 & -1 \\
+1 &  0 \\
+\end{pmatrix}
+$$
+
+En remplaçant $i$ par $J$ dans l'identitée d'Euler on obtient
+
+$$
+e^{J\pi \theta} = I\cos \theta + J\sin \theta
+$$
+
+La partie de droite de cette équation est en fait la matrice 
+
+$$
+\begin{pmatrix}
+\cos \theta & -\sin \theta \\
+\sin \theta &  \cos \theta \\
+\end{pmatrix}
+$$
+
+et le déterminant de cette matrice est $\cos^2 \theta + \sin^2 \theta = 1$. En représentant le nombre $x$ avec ses coordonnées polaire dans la matrice ci-haut, où $r = \sqrt{a^2 + b^2}$, on obtient $r I \cos \theta + r J \sin \theta$ et le déterminant de cette matrice est $a^2 + b^2$.
+
+Revenons à notre solution de l'équation diophantine. Nous avons déterminé que la norme de $x^2$ est $a^2 + b^2$. Puisque $x^2 = (a^2 - b^2) + 2abi$, on obtient la solution suivante à l'équation $u^2 + v^2 = w^2$:
+
+$$
+\begin{align*}
+u = & a^2 - b^2 \\
+v = & 2ab \\
+w = & a^2 + b^2
+\end{align*}
+$$ 
+
+Nous n'avons pas complèment terminé car comment avoir l'assurance que nous pouvons trouver toutes les solution avec cette méthode? Pour démontrer que c'est bien le cas, nous allons projeter ce point $x^2$ dans le plan complexe sur le cercle unitaire en divisant ses coordonnées par sa norme.
+
+Maintenant considérons la droite qui le traverse et passe par l'origine du plan. La pente de cette droite est $\frac{2ab}{a^2-b^2}$. Une autre représentation de ce nombre rationnel est $\frac{2\frac{b}{a}}{1 - \frac{b}{a}^2}$. Ainsi la boucle est bouclée avec une bijection dans $\mathbb{N}^2$, définie par l'application
+
+$$
+\frac{2\frac{b}{a}}{1 - \frac{b}{a}^2}
+\mapsto
+(a, b)
+$$
+
 ## L'importance de la bijection
+
+Pour le mathématicien amateur, il peut ne pas être évident de comprendre l'importance de la bijection et pourquoi elle démontre que notre méthode précédente pour trouver les solutions de $u^2 + v^2 = w^2$ est exhaustive. C'est ce que nous allons tenter d'expliquer ici.
+
+La définition d'une application bijective est une application qui à chaque élément de l'ensemble d'arrivé associe un unique élément de l'ensemble d'arrivée. Puisque cette association est unique, on peut déterminer sans ambiguité l'élément de l'ensemble de départ, l'application est inversible, et on sait qu'il y a exactement le même nombre d'éléments dans l'ensemble de départ et l'ensemble d'arrivée.
+
+C'est pour cette raison que la bijection précédente nous assure que toutes les solutions sont trouvées avec la méthode présentée. Si celà n'était pas le cas, un des éléments de l'ensemble d'arrivée pourrait ne pas être associé à un point rationel sur le cercle unitaire. Or, comme nous venons de le voir, ça n'est pas le cas.
 
 ## Les nombres hyperboliques multicomplexes
 
@@ -25,52 +80,35 @@ Mon souhait est que cette preuve soit accessible à un public non-expert intére
 ---
 ### Pot-pourri de notes à ordonner
 
-| Terme | Définition |
-|-|-|
-| $\mathcal{M}\mathbb{C}_n$ | L'ensemble des nombres multicomplexes d'ordre $n$ |
-| $\mathcal{M}\mathbf{H}_n$ | L'ensemble des nombres multicomplexes hyperboliques d'ordre $n$ |
-
 $$
-\mathbb{N}^n \xrightarrow{(x_0, x_1, \dots, x_{n-1}) \mapsto x_0 + x_1 i + \dots + x_{n-1} i^{n-1}} \mathcal{M}\mathbf{H}_n 
+\mathbb{N}^n \xrightarrow{(x_0, x_1, \dots, x_{n-1}) \mapsto \sum_{j=0}^{n-1}x_j i^j} \mathcal{M}\mathbf{H}_n 
 $$
 
-Pour les nombres multicomplexes hyperboliques $\mathcal{M}\mathbf{H}_n$, on introduit un élément imaginaire $i^n = 1$ et on définit une pseudo-norme $|x| = \det x$, analogue à la norme Euclidienne en dimension $2$. On a $\det x = \sum_{j=0}^{n/2 }x_{2j}^n - \sum_{j=0}^{n/2}x_{2j+1}^n + f(x_0, x_1, \dots, x_{n-1})$ et $|x| \in \pm \mathbb{N}_0$. À noter que $f(x_0, x_1, \dots, x_{n-1}) = 0$ si $n-2$ termes ou plus sont égaux à $0$. 
+Pour les nombres multicomplexes hyperboliques $\mathcal{M}\mathbf{H}_n$, on introduit un élément imaginaire $i^n = 1$ et on définit une pseudo-norme $|x| = \det x$, analogue à la norme Euclidienne en dimension $2$. On a $\det x = \sum_{j=0}^{n-1}x_{j}^n + f(x_0, x_1, \dots, x_{n-1})$ et $|x| \in \pm \mathbb{N}_0$. À noter que $f(x_0, x_1, \dots, x_{n-1}) = 0$ si $n-2$ termes ou plus sont égaux à $0$. 
 
 $$
  \mathcal{M}\mathbf{H}_n\xrightarrow{x \mapsto x^n} \mathcal{M}\mathbf{H}_n 
 $$
 
-À cette étape, aucun nombre $x^n = a_0 + a_1i + \dots + a_{n-1}i^{n-1}$ ne peut satisfaire $a_0$ et $a_2$ différents de $0$, et tous les autres termes égaux à $0$. On peut le démontrer en montrant que les termes $g_0, g_1, \dots, g_{n-1}$ de l'étape suivante ne peuvent satisfaire $g_0, g_2 \neq 0$ et $g_2, \dots, g_{n-1} = 0$.  
+À cette étape, aucun nombre $x^n = a_0 + a_1i + \dots + a_{n-1}i^{n-1}$ ne peut satisfaire $a_j$ et $a_k$ strictement positifs, et tous les autres termes égaux à $0$. On peut le démontrer comme suit.  
 
-C'est la raison spécifique pour laquelle on choisit les nombres multicomplexes hyperboliques, et non les multicomplexes classiques. Car en choisissant les multicomplexes hyperboliques, on s'assure que les termes dans $g_j$ sont tous positif, donc ne peuvent être égaux à zéro que si tous les $x_j$ sont aussi égaux à zéro. Donc $\det x^n = (\det x)^n = g_0^n + g_2^n + f(g_0, g_1, \dots, g_{n-1})$ où $f(g_0, g_1, \dots, g_{n-1}) \neq 0$.
+C'est la raison spécifique pour laquelle on choisit les nombres multicomplexes hyperboliques, et non les multicomplexes classiques. Car en choisissant les multicomplexes hyperboliques, on s'assure que les termes dans $g_j$ sont tous positif, donc ne peuvent être égaux à zéro que si au moins $n-1$ termes  $x_j$ sont aussi égaux à zéro. Donc $\det x^n = (\det x)^n = g_0^n + g_2^n + f(g_0, g_1, \dots, g_{n-1})$ où $f(g_j, g_k, \dots, g_{n-1}) \neq 0$.
 
 
 $$
  \mathcal{M}\mathbf{H}_n \xrightarrow{
-\begin{aligned}
-  & g_0(x_0, x_1, \dots, x_{n-1}) \\
-+ & g_1(x_0, x_1, \dots, x_{n-1}) i \\
-+ & \dots \\
-+ & g_{n-1}(x_0, x_1, \dots, x_{n-1}) i^{n-1} \\
-\end{aligned}
+\sum_{j=0}^{n-1}{g_j(x_0, x_1, \dots, x_{n-1})i^j}
 \mapsto
-\begin{aligned}
-  & g_0(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) \\
-+ & g_1(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) i \\
-+ & \dots \\
-+ & g_{n-1}(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) i^{n-1}
-\end{aligned}
+\sum_{j=0}^{n-1}{g_j(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0})i^j}
 } \mathcal{M}\mathbf{H}_n  
 $$
 
 Les fonctions $g_0, g_1, \cdots, g_{n-1}$ sont homogènes car elles résultent de la multiplication des termes de $x$ dans $x^n$.
 
 $$
- \mathcal{M}\mathbf{H}_n\xrightarrow{ \begin{align*}
-  & g_0(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) \\
-+ & g_1(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) i \\
-+ & \dots \\
-+ & g_{n-1}(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) i^{n-1} \end{align*} \mapsto (\frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0})} \mathbb{Q}_{n-1}  
+ \mathcal{M}\mathbf{H}_n\xrightarrow{ 
+\sum_{j=0}^{n-1}{g_j(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0})i^j}
+\mapsto (\frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0})} \mathbb{Q}_{n-1}  
 $$
 
 $$

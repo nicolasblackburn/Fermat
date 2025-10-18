@@ -6,6 +6,7 @@ import { execFile } from "child_process";
 import { promisify } from "util";
 import { minify } from "html-minifier-terser";
 import { renderFile } from "ejs";
+import * as cheerio from 'cheerio';
 
 const exec = promisify(execFile);
 const __filename = fileURLToPath(import.meta.url);
@@ -17,8 +18,8 @@ const OUT = join(__dirname, "docs");
 // HTML template
 const layoutFile = join(__dirname, "src/views/layout.ejs");
 
-async function htmlTemplate(title, content) {
-  return await renderFile(layoutFile, {title, content});
+async function htmlTemplate(data) {
+  return await renderFile(layoutFile, data);
 }
 
 async function ensureDir(p) {
@@ -26,10 +27,23 @@ async function ensureDir(p) {
 }
 
 async function convertMdToHtml(srcFile, outFile) {
+  let lang = "fr";
+  
+  if (srcFile.match(join(SRC, "en"))) {
+    lang = "en";
+  }
+
   // pandoc: convert md → HTML fragment
   const { stdout } = await exec("pandoc", ["-t", "html", srcFile]);
-  const title = parse(srcFile).name;
-  const fullHtml = await htmlTemplate(title, stdout);
+  const $ = cheerio.load(stdout);
+  //const data = $("table").first().remove();
+  const title = $("h1").first().remove().text();
+  const content = $.html();
+  const fullHtml = await htmlTemplate({
+    lang,
+    title, 
+    content
+  });
 
   // minify HTML
   const minHtml = await minify(fullHtml, {
