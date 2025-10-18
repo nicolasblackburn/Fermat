@@ -1,4 +1,29 @@
-# Fermat
+# Le dernier théorème de Fermat
+
+---
+
+## Motivation
+
+En 1995, la publication de la preuve d'Andrew Wiles du dernier théorème de Fermat a surpris le monde mathématique avec fulgurance. Elle se basait sur la théorie des courbes elliptiques et le travail acharné de nombreux mathématiciens avant lui. Il s'agit d'un document de 108 pages qui utilise des outils de la théorie des nombres extrêmement sophistiqués.
+
+Dans cet article, je vais tenter de démontrer le théorème de Fermat par une preuve plus facile d'approche, en utilisant une généralisation des nombres complexes introduite par Norbert Fleury en 1993, les nombres multicomplexes.
+
+Pour ce faire, je vais étendre très naturellement la théorie de Fleury, en introduisant les nombres hyperboliques multicomplexes, puis je vais généraliser la méthode de recherche des points rationnels sur le cercle unitaire aux surfaces unitaires associées aux nombres multicomplexes. Finalement, nous allons voir que l'équation $a^n + b^n = c^n$ ne peut être satisfaite.
+
+Mon souhait est que cette preuve soit accessible à un public non-expert intéressé par les mathématiques et ayant une connaissance de base des nombres complexes et de l'algèbre linéaire. Il est fort possible que je me sois trompé, même extrêmement probable, car après tout je ne suis qu'un amateur. Dans tous les cas, au minimum, ce document peut servir d'introduction aux nombres multicomplexes et inspirer d'autres amateurs et non-amateurs.
+
+## Introduction aux points rationnels sur le cercle unitaire
+
+## L'importance de la bijection
+
+## Les nombres hyperboliques multicomplexes
+
+## Les points rationnels sur une surface unitaire multicomplexe
+
+## Démonstration finale
+
+---
+### Pot-pourri de notes à ordonner
 
 $$
 \mathbb{N}^n \xrightarrow{(x_0, x_1, \dots, x_{n-1}) \mapsto x_0 + x_1 i + \dots + x_{n-1} i^{n-1}} \mathbb{M}_n 
@@ -14,13 +39,31 @@ $$
 
 
 $$
-\mathbb{M}_n \xrightarrow{g_0(x_0, x_1, \dots, x_{n-1}) + g_1(x_0, x_1, \dots, x_{n-1}) i + \dots g_{n-1}(x_0, x_1, \dots, x_{n-1}) i^{n-1} \mapsto g_0(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) + g_1(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) i + \dots g_{n-1}(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) i^{n-1}} \mathbb{M}_n   
+\mathbb{M}_n \xrightarrow{
+\begin{aligned}
+  & g_0(x_0, x_1, \dots, x_{n-1}) \\
++ & g_1(x_0, x_1, \dots, x_{n-1}) i \\
++ & \dots \\
++ & g_{n-1}(x_0, x_1, \dots, x_{n-1}) i^{n-1} \\
+\end{aligned}
+\mapsto
+\begin{aligned}
+  & g_0(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) \\
++ & g_1(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) i \\
++ & \dots \\
++ & g_{n-1}(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) i^{n-1}
+\end{aligned}
+} \mathbb{M}_n   
 $$
 
 Les fonctions $g_0, g_1, \cdots, g_{n-1}$ sont homogènes car elles résultent de la multiplication des termes de $x$ dans $x^n$.
 
 $$
-\mathbb{M}_n \xrightarrow{g_0(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) + g_1(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) i + \dots g_{n-1}(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) i^{n-1} \mapsto (\frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0})} \mathbb{Q}_{n-1}  
+\mathbb{M}_n \xrightarrow{ \begin{align*}
+  & g_0(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) \\
++ & g_1(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) i \\
++ & \dots \\
++ & g_{n-1}(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) i^{n-1} \end{align*} \mapsto (\frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0})} \mathbb{Q}_{n-1}  
 $$
 
 $$

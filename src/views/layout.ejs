@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Théories</title>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$','$$'], ['\\[','\\]']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+  body { font-family: sans-serif; margin: 2rem; max-width: 800px; }
+  header { border-bottom: 1px solid #ccc; margin-bottom: 1rem; padding-bottom: 0.5rem; }
+  nav a { margin-right: 1rem; text-decoration: none; color: #333; }
+hr {
+  border: none;          /* supprime la bordure par défaut */
+  border-top: 1px solid black;  /* ligne noire solide de 1px */
+  height: 1px;           /* garantit la hauteur */
+  margin: 1em 0;         /* optionnel : espace au-dessus et en dessous */
+}	
+</style>
+</head>
+<body>
+    <!--
+<header>
+  <nav>
+    <h1>Théories</h1>
+    <a href="/">Accueil</a>
+    <a href="/blogue/">Blogue</a>
+    <a href="/discussions/">Discussions</a>
+    <a href="/a-propos.html">À propos</a>
+  </nav>
+</header>
+    -->
+<main>
+<%- content %>
+</main>
+</body>
+</html>
+

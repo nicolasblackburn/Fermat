@@ -1,1 +1,1 @@
-command Build !php scripts/generate-static.php
+command Build !node build.js
