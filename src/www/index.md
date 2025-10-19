@@ -88,7 +88,7 @@ $$
 
 À cette étape, aucun nombre $x^n = a_0 + a_1i + \dots + a_{n-1}i^{n-1}$ ne peut satisfaire $a_j$ et $a_k$ strictement positifs, et tous les autres termes égaux à $0$. On peut le démontrer comme suit.  
 
-C'est la raison spécifique pour laquelle on choisit les nombres multicomplexes hyperboliques, et non les multicomplexes classiques. Car en choisissant les multicomplexes hyperboliques, on s'assure que les termes dans $g_j$ sont tous positif, donc ne peuvent être égaux à zéro que si au moins $n-1$ termes  $x_j$ sont aussi égaux à zéro. Donc $\det x^n = (\det x)^n = g_0^n + g_2^n + f(g_0, g_1, \dots, g_{n-1})$ où $f(g_j, g_k, \dots, g_{n-1}) \neq 0$.
+C'est la raison spécifique pour laquelle on choisit les nombres multicomplexes hyperboliques, et non les multicomplexes classiques. Car en choisissant les multicomplexes hyperboliques, on s'assure que les termes dans $g_j$ sont tous positif, donc ne peuvent être égaux à zéro que si au moins $n-1$ termes  $x_j$ sont aussi égaux à zéro. Donc $\det x^n = (\det x)^n = g_j^n + g_k^n + f(g_0, g_1, \dots, g_{n-1})$ où $f(g_0, g_1, \dots, g_{n-1}) \neq 0$.
 
 
 $$
