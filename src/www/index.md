@@ -26,22 +26,7 @@ J = \begin{pmatrix}
 \end{pmatrix}
 $$
 
-En remplaçant $i$ par $J$ dans l'identitée d'Euler on obtient
-
-$$
-e^{J\pi \theta} = I\cos \theta + J\sin \theta
-$$
-
-La partie de droite de cette équation est en fait la matrice 
-
-$$
-\begin{pmatrix}
-\cos \theta & -\sin \theta \\
-\sin \theta &  \cos \theta \\
-\end{pmatrix}
-$$
-
-et le déterminant de cette matrice est $\cos^2 \theta + \sin^2 \theta = 1$. En représentant le nombre $x$ avec ses coordonnées polaire dans la matrice ci-haut, où $r = \sqrt{a^2 + b^2}$, on obtient $r I \cos \theta + r J \sin \theta$ et le déterminant de cette matrice est $a^2 + b^2$.
+En remplaçant $i$ par $J$ et en multipliant le terme $a$ par la matrice identitée $I$ dans $a+bi$ on obtient une matrice $X = aI + bJ$. Le déterminant de cette matrice est exactement le carré de la norme de $x$, $a^2 + b^2$.
 
 Revenons à notre solution de l'équation diophantine. Nous avons déterminé que la norme de $x^2$ est $a^2 + b^2$. Puisque $x^2 = (a^2 - b^2) + 2abi$, on obtient la solution suivante à l'équation $u^2 + v^2 = w^2$:
 
@@ -53,7 +38,7 @@ w = & a^2 + b^2
 \end{align*}
 $$ 
 
-Nous n'avons pas complèment terminé car comment avoir l'assurance que nous pouvons trouver toutes les solution avec cette méthode? Pour démontrer que c'est bien le cas, nous allons projeter ce point $x^2$ dans le plan complexe sur le cercle unitaire en divisant ses coordonnées par sa norme.
+Nous n'avons pas complèment terminé car comment avoir l'assurance que nous pouvons trouver toutes les solutions avec cette méthode? Pour démontrer que c'est bien le cas, nous allons projeter ce point $x^2$ dans le plan complexe sur le cercle unitaire en divisant ses coordonnées par sa norme.
 
 Maintenant considérons la droite qui le traverse et passe par l'origine du plan. La pente de cette droite est $\frac{2ab}{a^2-b^2}$. Une autre représentation de ce nombre rationnel est $\frac{2\frac{b}{a}}{1 - \frac{b}{a}^2}$. Ainsi la boucle est bouclée avec une bijection dans $\mathbb{N}^2$, définie par l'application
 
@@ -67,11 +52,22 @@ $$
 
 Pour le mathématicien amateur, il peut ne pas être évident de comprendre l'importance de la bijection et pourquoi elle démontre que notre méthode précédente pour trouver les solutions de $u^2 + v^2 = w^2$ est exhaustive. C'est ce que nous allons tenter d'expliquer ici.
 
-La définition d'une application bijective est une application qui à chaque élément de l'ensemble d'arrivé associe un unique élément de l'ensemble d'arrivée. Puisque cette association est unique, on peut déterminer sans ambiguité l'élément de l'ensemble de départ, l'application est inversible, et on sait qu'il y a exactement le même nombre d'éléments dans l'ensemble de départ et l'ensemble d'arrivée.
+La définition d'une application bijective est une application qui à chaque élément de l'ensemble d'arrivé associe un unique élément de l'ensemble de départ. Puisque cette association est unique, on peut déterminer sans ambiguité l'élément de l'ensemble de départ à partir d'un élément de l'ensemble d'arrivée, l'application est inversible. On sait aussi qu'il y a exactement le même nombre d'éléments dans l'ensemble de départ et l'ensemble d'arrivée.
 
 C'est pour cette raison que la bijection précédente nous assure que toutes les solutions sont trouvées avec la méthode présentée. Si celà n'était pas le cas, un des éléments de l'ensemble d'arrivée pourrait ne pas être associé à un point rationel sur le cercle unitaire. Or, comme nous venons de le voir, ça n'est pas le cas.
 
 ## Les nombres hyperboliques multicomplexes
+
+
+Nous allons d'abord faire un petit rappel de la définition et des propriétés des nombres multicomplexes. Pour plus d'information nous invitons le lecteur à se référer à la publication de Norbert Fleury.
+
+Pour définir les nombres multicomplexes $\mathcal{M}\mathbb{C}_n$, nous allons déterminer un nombre imaginaire $i$ tel que $i^n = -1$. Un nombre multicomplexe $x \in \mathcal{M}\mathbb{C}_n$ est défini comme une combinaison linéaire $\sum_{k=0}^{n-1}x_k i^k$, où les coefficients $x_0$ sont des nombres réels.
+
+Analogue à la norme dans les complexes définie par la racine du déterminant, on a aussi une pseudo-norme. Il ne s'agit pas d'une norme usuelle car elle ne respecte pas l'inégalité du triangle et elle peut prendre une valeur nulle ou négative. Pour un nombre $x = \sum_{k=0}^{n-1}{x_k i^k}$, elle est définie par la racine $n$-ième du déterminant de la matrice $\sum_{k=0}^{n-1}{x_k J^k}$, où $J$ est une matrice telles que $J^n = -I$.
+
+Nous pouvons maintenant introduires les nombres multicomplexes hyperboliques $\mathcal{M}\mathbf{H}_n$, qui sont aux nombres multicomplexes ce que sont les nombres hyperboliques aux nombres complexes. On définit un terme $i$ tel que $i^n = 1$. La pseudo norme est définie de la même manière que pour les nombres multicomplexes. On prend la racine $n$-ième du déterminant de la matrice $\sum_{k=0}^{n-1}{x_k J^k}$, où $J^n = I$.
+
+Surface unitaire $\det X = 1$.
 
 ## Les points rationnels sur une surface unitaire multicomplexe
 
