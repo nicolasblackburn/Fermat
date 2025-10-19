@@ -103,11 +103,11 @@ The functions $g_0, g_1, \cdots, g_{n-1}$ are homogeneous because they result fr
 $$
  \mathcal{M}\mathbf{H}_n\xrightarrow{ 
 \sum_{j=0}^{n-1}{g_j(1, \frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0})i^j}
-\mapsto (\frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0})} \mathbb{Q}_{n-1}  
+\mapsto (\frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0})} \mathbb{Q}^{n-1}  
 $$
 
 $$
-\mathbb{Q}_{n-1} \xrightarrow{(\frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) \mapsto (x_0, x_1, \dots, x_{n-1})} \mathbb{N}_n
+\mathbb{Q}^{n-1} \xrightarrow{(\frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) \mapsto (x_0, x_1, \dots, x_{n-1})} \mathbb{N}^n
 $$
 
-This is in fact a bijection between a subset $S \subset \mathbb{Q}_{n-1}$ and the rational points of the unit surface of $\mathcal{M}\mathbf{H}_n$. Thus, we exclude the possibility of the existence of a number $x \in \mathcal{M}\mathbf{H}_n$ where $(\det x)^n = y^n + z^n$ and this concludes the proof.
+This is actually a bijection between $\mathbb{N}^n$ and the rational points of the unit surface of $\mathcal{M}\mathbf{H}_n$. Thus, we exclude the possibility of the existence of a number $x \in \mathcal{M}\mathbf{H}_n$ where $(\det x)^n = y^n + z^n$ and this concludes the proof.
