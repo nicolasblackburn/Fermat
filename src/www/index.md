@@ -1,4 +1,3 @@
-
 # Le dernier théorème de Fermat
 
 ## Motivation
@@ -56,20 +55,20 @@ La définition d'une application bijective est une application qui à chaque él
 
 C'est pour cette raison que la bijection précédente nous assure que toutes les solutions sont trouvées avec la méthode présentée. Si celà n'était pas le cas, un des éléments de l'ensemble d'arrivée pourrait ne pas être associé à un point rationel sur le cercle unitaire. Or, comme nous venons de le voir, ça n'est pas le cas.
 
-## Les nombres hyperboliques multicomplexes
+## Les nombres multicomplexes hyperboliques
 
 
 Nous allons d'abord faire un petit rappel de la définition et des propriétés des nombres multicomplexes. Pour plus d'information nous invitons le lecteur à se référer à la publication de Norbert Fleury.
 
-Pour définir les nombres multicomplexes $\mathcal{M}\mathbb{C}_n$, nous allons déterminer un nombre imaginaire $i$ tel que $i^n = -1$. Un nombre multicomplexe $x \in \mathcal{M}\mathbb{C}_n$ est défini comme une combinaison linéaire $\sum_{k=0}^{n-1}x_k i^k$, où les coefficients $x_0$ sont des nombres réels.
+Pour définir les nombres multicomplexes $\mathcal{M}\mathbb{C}_n$, nous allons déterminer un nombre imaginaire $i$ tel que $i^n = -1$. Un nombre multicomplexe $x \in \mathcal{M}\mathbb{C}_n$ est défini comme une combinaison linéaire $\sum_{k=0}^{n-1}x_k i^k$, où les coefficients $x_k$ sont des nombres réels.
 
 Analogue à la norme dans les complexes définie par la racine du déterminant, on a aussi une pseudo-norme. Il ne s'agit pas d'une norme usuelle car elle ne respecte pas l'inégalité du triangle et elle peut prendre une valeur nulle ou négative. Pour un nombre $x = \sum_{k=0}^{n-1}{x_k i^k}$, elle est définie par la racine $n$-ième du déterminant de la matrice $\sum_{k=0}^{n-1}{x_k J^k}$, où $J$ est une matrice telles que $J^n = -I$.
 
-Nous pouvons maintenant introduires les nombres multicomplexes hyperboliques $\mathcal{M}\mathbf{H}_n$, qui sont aux nombres multicomplexes ce que sont les nombres hyperboliques aux nombres complexes. On définit un terme $i$ tel que $i^n = 1$. La pseudo norme est définie de la même manière que pour les nombres multicomplexes. On prend la racine $n$-ième du déterminant de la matrice $\sum_{k=0}^{n-1}{x_k J^k}$, où $J^n = I$.
-
-Surface unitaire $\det X = 1$.
+Nous pouvons maintenant introduires les nombres multicomplexes hyperboliques $\mathcal{M}\mathbf{H}_n$, qui sont aux nombres multicomplexes ce que sont les nombres hyperboliques aux nombres complexes. On définit un terme $i$ tel que $i^n = 1$. Un nombre $x \in \mathcal{M}\mathbf{H}_n$ est la combinaison linéaire $\sum_{k=0}^{n-1}x_k i^k$ à coefficients $x_k$ dans $\mathbb{R}$. La pseudo norme est définie de la même manière que pour les nombres multicomplexes. On prend la racine $n$-ième du déterminant de la matrice $\sum_{k=0}^{n-1}{x_k J^k}$, où $J^n = I$.
 
 ## Les points rationnels sur une surface unitaire multicomplexe
+
+$\det X = 1$.
 
 ## Démonstration finale
 
