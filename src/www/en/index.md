@@ -25,22 +25,7 @@ J = \begin{pmatrix}
 \end{pmatrix}
 $$
 
-By replacing $i$ by $J$ in the Euler identity we obtain
-
-$$
-e^{J\pi \theta} = I\cos \theta + J\sin \theta
-$$
-
-The right side of this equation is actually the matrix 
-
-$$
-\begin{pmatrix}
-\cos \theta & -\sin \theta \\
-\sin \theta & \cos \theta \\
-\end{pmatrix}
-$$
-
-and the determinant of this matrix is ​​$\cos^2 \theta + \sin^2 \theta = 1$. By representing the number $x$ with its polar coordinates in the matrix above, where $r = \sqrt{a^2 + b^2}$, we obtain $r I \cos \theta + r J \sin \theta$ and the determinant of this matrix is ​​$a^2 + b^2$.
+By replacing $i$ by $J$ and multiplying the term $a$ by the identity matrix $I$ in $a+bi$ we obtain a matrix $X = aI + bJ$. The determinant of this matrix is ​​exactly the square of the norm of $x$, $a^2 + b^2$.
 
 Let's return to our solution of the diophantine equation. We have determined that the norm of $x^2$ is $a^2 + b^2$. Since $x^2 = (a^2 - b^2) + 2abi$, we obtain the following solution to the equation $u^2 + v^2 = w^2$:
 
@@ -66,11 +51,22 @@ $$
 
 For the amateur mathematician, it may not be obvious to understand the importance of bijection and why it demonstrates that our previous method for finding solutions to $u^2 + v^2 = w^2$ is exhaustive. This is what we will try to explain here.
 
-The definition of a bijective map is a map which associates a unique element of the finish set with each element of the arrival set. Since this association is unique, we can unambiguously determine the element of the starting set, the application is invertible, and we know that there are exactly the same number of elements in the starting set and the ending set.
+The definition of a bijective map is a map which associates a unique element of the starting set with each element of the arrival set. Since this association is unique, we can unambiguously determine the element of the starting set from an element of the ending set, the application is invertible. We also know that there are exactly the same number of elements in the starting set and the ending set.
 
 It is for this reason that the previous bijection assures us that all the solutions are found with the method presented. If this were not the case, one of the elements of the arrival set might not be associated with a rational point on the unit circle. However, as we have just seen, this is not the case.
 
 ## Multicomplex hyperbolic numbers
+
+
+We will first give a quick reminder of the definition and properties of multicomplex numbers. For more information we invite the reader to refer to the publication by Norbert Fleury.
+
+To define the multicomplex numbers $\mathcal{M}\mathbb{C}_n$, we will determine an imaginary number $i$ such that $i^n = -1$. A multicomplex number $x \in \mathcal{M}\mathbb{C}_n$ is defined as a linear combination $\sum_{k=0}^{n-1}x_k i^k$, where the coefficients $x_0$ are real numbers.
+
+Analogous to the norm in complexes defined by the root of the determinant, we also have a pseudo-norm. This is not a usual standard because it does not respect the inequality of the triangle and it can take a zero or negative value. For a number $x = \sum_{k=0}^{n-1}{x_k i^k}$, it is defined by the $n$-th root of the determinant of the matrix $\sum_{k=0}^{n-1}{x_k J^k}$, where $J$ is a matrix such that $J^n = -I$.
+
+We can now introduce the hyperbolic multicomplex numbers $\mathcal{M}\mathbf{H}_n$, which are to multicomplex numbers what hyperbolic numbers are to complex numbers. We define a term $i$ such that $i^n = 1$. The pseudo norm is defined in the same way as for multicomplex numbers. We take the $n$-th root of the determinant of the matrix $\sum_{k=0}^{n-1}{x_k J^k}$, where $J^n = I$.
+
+Unit area $\det X = 1$.
 
 ## Rational points on a multicomplex unit surface
 
