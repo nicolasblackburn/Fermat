@@ -55,20 +55,20 @@ The definition of a bijective map is a map which associates a unique element of 
 
 It is for this reason that the previous bijection assures us that all the solutions are found with the method presented. If this were not the case, one of the elements of the arrival set might not be associated with a rational point on the unit circle. However, as we have just seen, this is not the case.
 
-## Multicomplex hyperbolic numbers
+## Hyperbolic multicomplex numbers
 
 
 We will first give a quick reminder of the definition and properties of multicomplex numbers. For more information we invite the reader to refer to the publication by Norbert Fleury.
 
-To define the multicomplex numbers $\mathcal{M}\mathbb{C}_n$, we will determine an imaginary number $i$ such that $i^n = -1$. A multicomplex number $x \in \mathcal{M}\mathbb{C}_n$ is defined as a linear combination $\sum_{k=0}^{n-1}x_k i^k$, where the coefficients $x_0$ are real numbers.
+To define the multicomplex numbers $\mathcal{M}\mathbb{C}_n$, we will determine an imaginary number $i$ such that $i^n = -1$. A multicomplex number $x \in \mathcal{M}\mathbb{C}_n$ is defined as a linear combination $\sum_{k=0}^{n-1}x_k i^k$, where the coefficients $x_k$ are real numbers.
 
 Analogous to the norm in complexes defined by the root of the determinant, we also have a pseudo-norm. This is not a usual standard because it does not respect the inequality of the triangle and it can take a zero or negative value. For a number $x = \sum_{k=0}^{n-1}{x_k i^k}$, it is defined by the $n$-th root of the determinant of the matrix $\sum_{k=0}^{n-1}{x_k J^k}$, where $J$ is a matrix such that $J^n = -I$.
 
-We can now introduce the hyperbolic multicomplex numbers $\mathcal{M}\mathbf{H}_n$, which are to multicomplex numbers what hyperbolic numbers are to complex numbers. We define a term $i$ such that $i^n = 1$. The pseudo norm is defined in the same way as for multicomplex numbers. We take the $n$-th root of the determinant of the matrix $\sum_{k=0}^{n-1}{x_k J^k}$, where $J^n = I$.
-
-Unit area $\det X = 1$.
+We can now introduce the hyperbolic multicomplex numbers $\mathcal{M}\mathbf{H}_n$, which are to multicomplex numbers what hyperbolic numbers are to complex numbers. We define a term $i$ such that $i^n = 1$. A number $x \in \mathcal{M}\mathbf{H}_n$ is the linear combination $\sum_{k=0}^{n-1}x_k i^k$ with coefficients $x_k$ in $\mathbb{R}$. The pseudo norm is defined in the same way as for multicomplex numbers. We take the $n$-th root of the determinant of the matrix $\sum_{k=0}^{n-1}{x_k J^k}$, where $J^n = I$.
 
 ## Rational points on a multicomplex unit surface
+
+$\det X = 1$.
 
 ## Final demonstration
 
