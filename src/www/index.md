@@ -10,11 +10,15 @@ Pour ce faire, je vais étendre la théorie de Fleury, en introduisant les nombr
 
 Mon souhait est que cette preuve soit accessible à un public non-expert intéressé par les mathématiques et ayant une connaissance de base des nombres complexes et de l'algèbre linéaire. Il est fort possible que je me sois trompé, même extrêmement probable, car après tout je ne suis qu'un amateur. Dans tous les cas, au minimum, ce document peut servir d'introduction aux nombres multicomplexes et inspirer d'autres amateurs et non-amateurs.
 
-## Introduction aux points rationnels sur le cercle unitaire
+## Triplets pythagoriciens et points rationnels sur le cercle unitaire
 
-Les points rationnels sur le cercle unitaire $x^2 + y^2 = 1$ permettent de trouver les solutions à l'équation diophantine $u^2 + v^2 = w^2$. En effet si $x = \frac{a}{b}$ et $y = \frac{c}{d}$, alors $(ad)^2 + (bc)^2 = (bd)^2$.
+Nous allons commencer par trouver les solutions à l'équation diophantienne $x^2 + y^2 = z^2$. Il s'agit du seul cas où il existe des solutions non triviales à l'équation $x^n + y^n = z^n$. Les triplets $(x, y, z)$ solutions de l'équation pour $n = 2$ portent le nom de triplets pythagoriciens. La chaîne 3Blue1Brown sur You Tube possède [une très belle vidéo sur ces nombres](https://www.youtube.com/watch?v=QJYmyhnaaek) et comment les trouver. C'est d'ailleurs ce qui a inspiré cet article.
 
-Une méthode systématique pour trouver des solutions à l'équation diophantine $u^2 + v^2 = w^2$ consiste à prendre un couple de nombres entiers strictement positifs $(a, b) \in \mathbb{N}^2$ et à les envoyer dans les nombres complexes par la transformation $(a,b) \mapsto a + bi$. Posons $x = a + bi$. La norme de $x$ est $\sqrt{a^2 + b^2}$. En élevant $x$ au carré, on obtient l'assurance que la norme de $x^2$ est entière, égale à $a^2 + b^2$. Celà fonctionne car la norme de $x$ élevée au carré est en fait son déterminant. 
+Nous allons tenter ici de réexpliquer le contenu de cette vidéo à notre manière, et essayer d'expliquer pourquoi la méthode de passage par les nombres complexes marche.
+
+Les points rationnels sur le cercle unitaire $a^2 + b^2 = 1$ pour tout $a, b$ réels correspondent aux solutions de l'équation diophantienne $x^2 + y^2 = z^2$. En effet si $a = \frac{p}{q}$ et $b = \frac{r}{s}$ sont deux nombres rationnels, alors $x = sp$, $y = qr$ et $z = qs$ sont des solutions de l'équation.
+
+Une méthode systématique pour trouver des solutions de notre équation diophantienne consiste à prendre un couple de nombres entiers strictement positifs $(a, b) \in \mathbb{N}^2$ et à les envoyer dans les nombres complexes par la transformation $(a,b) \mapsto a + bi$. Posons $x = a + bi$. La norme de $|x|$ est $\sqrt{a^2 + b^2}$. En élevant $x$ au carré, on obtient l'assurance que la norme de $x^2$ est entière, égale à $a^2 + b^2$. Celà fonctionne car la norme de $x$ élevée au carré est en fait son déterminant. 
 
 Voyons comment celà fonctionne. On peut représenter $i$ par la matrice 
 
@@ -27,7 +31,7 @@ $$
 
 En remplaçant $i$ par $J$ et en multipliant le terme $a$ par la matrice identitée $I$ dans $a+bi$ on obtient une matrice $X = aI + bJ$. Le déterminant de cette matrice est exactement le carré de la norme de $x$, $a^2 + b^2$.
 
-Revenons à notre solution de l'équation diophantine. Nous avons déterminé que la norme de $x^2$ est $a^2 + b^2$. Puisque $x^2 = (a^2 - b^2) + 2abi$, on obtient la solution suivante à l'équation $u^2 + v^2 = w^2$:
+Revenons à notre solution de l'équation diophantienne. Nous avons déterminé que la norme de $x^2$ est $a^2 + b^2$. Puisque $x^2 = (a^2 - b^2) + 2abi$, on obtient la solution suivante à l'équation $u^2 + v^2 = w^2$:
 
 $$
 \begin{align*}
@@ -70,7 +74,7 @@ La pseudo norme $|x|$ est définie de la même manière que pour les nombres mul
 
 ## Les points rationnels sur une surface unitaire multicomplexe
 
-On peut généraliser la méthode au début de cet article pour trouver les points rationnels autour d'un cercle afin de trouver les points rationnels sur la surface unitaire $S = \{x \in \mathcal{M}\mathbf{H}_n: |x| = 1\}$. Ces points sont aussi des solutions de l'équation diophantine $|u| = v^n$, où $u$ est un élément de $\mathcal{M}\mathbf{H}_n$ à coefficients entiers et $v$ est un entier positif.
+On peut généraliser la méthode au début de cet article pour trouver les points rationnels autour d'un cercle afin de trouver les points rationnels sur la surface unitaire $S = \{x \in \mathcal{M}\mathbf{H}_n: |x| = 1\}$. Ces points sont aussi des solutions de l'équation diophantienne $|u| = v^n$, où $u$ est un élément de $\mathcal{M}\mathbf{H}_n$ à coefficients entiers et $v$ est un entier positif.
 
 ## Démonstration finale
 

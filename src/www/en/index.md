@@ -10,11 +10,15 @@ To do this, I will extend Fleury's theory, by introducing hyperbolic multicomple
 
 My wish is that this proof is accessible to a non-expert audience interested in mathematics and with a basic knowledge of complex numbers and linear algebra. It is quite possible that I was wrong, even extremely likely, because after all I am only an amateur. In any case, at a minimum, this document can serve as an introduction to multicomplex numbers and inspire other amateurs and non-amateurs.
 
-## Introduction to rational points on the unit circle
+## Pythagorean triples and rational points on the unit circle
 
-The rational points on the unit circle $x^2 + y^2 = 1$ allow us to find the solutions to the diophantine equation $u^2 + v^2 = w^2$. Indeed if $x = \frac{a}{b}$ and $y = \frac{c}{d}$, then $(ad)^2 + (bc)^2 = (bd)^2$.
+We will start by finding the solutions to the Diophantine equation $x^2 + y^2 = z^2$. This is the only case where there are non-trivial solutions to the equation $x^n + y^n = z^n$. The triples $(x, y, z)$ solutions of the equation for $n = 2$ are called Pythagorean triples. The 3Blue1Brown channel on You Tube has [a very nice video about these numbers](https://www.youtube.com/watch?v=QJYmyhnaaek) and how to find them. This is what inspired this article.
 
-A systematic method for finding solutions to the diophantine equation $u^2 + v^2 = w^2$ consists of taking a pair of strictly positive integers $(a, b) \in \mathbb{N}^2$ and sending them into the complex numbers by the transformation $(a,b) \mapsto a + bi$. Let $x = a + bi$. The norm of $x$ is $\sqrt{a^2 + b^2}$. By squaring $x$, we obtain the assurance that the norm of $x^2$ is integer, equal to $a^2 + b^2$. This works because the norm of $x$ squared is in fact its determinant. 
+We will try here to re-explain the content of this video in our own way, and try to explain why the method of passing through complex numbers works.
+
+The rational points on the unit circle $a^2 + b^2 = 1$ for all real $a, b$ correspond to the solutions of the Diophantine equation $x^2 + y^2 = z^2$. Indeed if $a = \frac{p}{q}$ and $b = \frac{r}{s}$ are two rational numbers, then $x = sp$, $y = qr$ and $z = qs$ are solutions of the equation.
+
+A systematic method for finding solutions to our Diophantine equation consists of taking a pair of strictly positive integers $(a, b) \in \mathbb{N}^2$ and sending them into the complex numbers by the transformation $(a,b) \mapsto a + bi$. Let $x = a + bi$. The norm of $|x|$ is $\sqrt{a^2 + b^2}$. By squaring $x$, we obtain the assurance that the norm of $x^2$ is integer, equal to $a^2 + b^2$. This works because the norm of $x$ squared is in fact its determinant. 
 
 Let's see how this works. We can represent $i$ by the matrix 
 
@@ -27,7 +31,7 @@ $$
 
 By replacing $i$ by $J$ and multiplying the term $a$ by the identity matrix $I$ in $a+bi$ we obtain a matrix $X = aI + bJ$. The determinant of this matrix is ​​exactly the square of the norm of $x$, $a^2 + b^2$.
 
-Let's return to our solution of the diophantine equation. We have determined that the norm of $x^2$ is $a^2 + b^2$. Since $x^2 = (a^2 - b^2) + 2abi$, we obtain the following solution to the equation $u^2 + v^2 = w^2$:
+Let's return to our solution of the Diophantine equation. We have determined that the norm of $x^2$ is $a^2 + b^2$. Since $x^2 = (a^2 - b^2) + 2abi$, we obtain the following solution to the equation $u^2 + v^2 = w^2$:
 
 $$
 \begin{align*}
@@ -64,11 +68,13 @@ To define the multicomplex numbers $\mathcal{M}\mathbb{C}_n$, we will determine 
 
 Analogous to the norm in complexes defined by the root of the determinant, we also have a pseudo-norm. This is not a usual standard because it does not respect the inequality of the triangle and it can take a zero or negative value. For a number $x = \sum_{k=0}^{n-1}{x_k i^k}$, it is defined by the $n$-th root of the determinant of the matrix $\sum_{k=0}^{n-1}{x_k J^k}$, where $J$ is a matrix such that $J^n = -I$.
 
-We can now introduce the hyperbolic multicomplex numbers $\mathcal{M}\mathbf{H}_n$, which are to multicomplex numbers what hyperbolic numbers are to complex numbers. We define a term $i$ such that $i^n = 1$. A number $x \in \mathcal{M}\mathbf{H}_n$ is the linear combination $\sum_{k=0}^{n-1}x_k i^k$ with coefficients $x_k$ in $\mathbb{R}$. The pseudo norm is defined in the same way as for multicomplex numbers. We take the $n$-th root of the determinant of the matrix $\sum_{k=0}^{n-1}{x_k J^k}$, where $J^n = I$.
+We can now introduce the hyperbolic multicomplex numbers $\mathcal{M}\mathbf{H}_n$, which are to multicomplex numbers what hyperbolic numbers are to complex numbers. We define a term $i$ such that $i^n = 1$. A number $x \in \mathcal{M}\mathbf{H}_n$ is the linear combination $\sum_{k=0}^{n-1}x_k i^k$ with coefficients $x_k$ in $\mathbb{R}$. 
+
+The pseudo norm $|x|$ is defined in the same way as for multicomplex numbers. We take the $n$-th root of the determinant of the matrix $\sum_{k=0}^{n-1}{x_k J^k}$, where $J^n = I$.
 
 ## Rational points on a multicomplex unit surface
 
-$\det X = 1$.
+We can generalize the method at the beginning of this article to find the rational points around a circle in order to find the rational points on the unit surface $S = \{x \in \mathcal{M}\mathbf{H}_n: |x| = 1\}$. These points are also solutions of the Diophantine equation $|u| = v^n$, where $u$ is an element of $\mathcal{M}\mathbf{H}_n$ with integer coefficients and $v$ is a positive integer.
 
 ## Final demonstration
 
