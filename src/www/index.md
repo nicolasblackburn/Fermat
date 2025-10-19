@@ -64,11 +64,13 @@ Pour définir les nombres multicomplexes $\mathcal{M}\mathbb{C}_n$, nous allons 
 
 Analogue à la norme dans les complexes définie par la racine du déterminant, on a aussi une pseudo-norme. Il ne s'agit pas d'une norme usuelle car elle ne respecte pas l'inégalité du triangle et elle peut prendre une valeur nulle ou négative. Pour un nombre $x = \sum_{k=0}^{n-1}{x_k i^k}$, elle est définie par la racine $n$-ième du déterminant de la matrice $\sum_{k=0}^{n-1}{x_k J^k}$, où $J$ est une matrice telles que $J^n = -I$.
 
-Nous pouvons maintenant introduires les nombres multicomplexes hyperboliques $\mathcal{M}\mathbf{H}_n$, qui sont aux nombres multicomplexes ce que sont les nombres hyperboliques aux nombres complexes. On définit un terme $i$ tel que $i^n = 1$. Un nombre $x \in \mathcal{M}\mathbf{H}_n$ est la combinaison linéaire $\sum_{k=0}^{n-1}x_k i^k$ à coefficients $x_k$ dans $\mathbb{R}$. La pseudo norme est définie de la même manière que pour les nombres multicomplexes. On prend la racine $n$-ième du déterminant de la matrice $\sum_{k=0}^{n-1}{x_k J^k}$, où $J^n = I$.
+Nous pouvons maintenant introduires les nombres multicomplexes hyperboliques $\mathcal{M}\mathbf{H}_n$, qui sont aux nombres multicomplexes ce que sont les nombres hyperboliques aux nombres complexes. On définit un terme $i$ tel que $i^n = 1$. Un nombre $x \in \mathcal{M}\mathbf{H}_n$ est la combinaison linéaire $\sum_{k=0}^{n-1}x_k i^k$ à coefficients $x_k$ dans $\mathbb{R}$. 
+
+La pseudo norme $|x|$ est définie de la même manière que pour les nombres multicomplexes. On prend la racine $n$-ième du déterminant de la matrice $\sum_{k=0}^{n-1}{x_k J^k}$, où $J^n = I$.
 
 ## Les points rationnels sur une surface unitaire multicomplexe
 
-$\det X = 1$.
+On peut généraliser la méthode au début de cet article pour trouver les points rationnels autour d'un cercle afin de trouver les points rationnels sur la surface unitaire $S = \{x \in \mathcal{M}\mathbf{H}_n: |x| = 1\}$. Ces points sont aussi des solutions de l'équation diophantine $|u| = v^n$, où $u$ est un élément de $\mathcal{M}\mathbf{H}_n$ à coefficients entiers et $v$ est un entier positif.
 
 ## Démonstration finale
 
