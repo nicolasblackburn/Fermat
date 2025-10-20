@@ -97,7 +97,7 @@ $$
  \mathcal{M}\mathbf{H}_n\xrightarrow{x \mapsto x^n} \mathcal{M}\mathbf{H}_n 
 $$
 
-À cette étape, aucun nombre $x^n = a_0 + a_1i + \dots + a_{n-1}i^{n-1}$, ou les termes $a_j$ sont des fonctions $g_j(x_0, x_1, \dots, x_{n-1})$ des coefficients de $x$. Il est impossible de satisfaire que deux termes $a_j$ et $a_k$ soient strictement positifs, et tous les autres termes égaux à $0$. On peut le démontrer comme suit.  
+À cette étape, $x^n = a_0 + a_1i + \dots + a_{n-1}i^{n-1}$, ou les termes $a_j$ sont des fonctions $g_j(x_0, x_1, \dots, x_{n-1})$ des coefficients de $x$. Il est impossible de satisfaire que deux termes $a_j$ et $a_k$ soient strictement positifs, et tous les autres termes égaux à $0$. On peut le démontrer comme suit.  
 
 C'est la raison spécifique pour laquelle on choisit les nombres multicomplexes hyperboliques, et non les multicomplexes classiques. Car en choisissant les multicomplexes hyperboliques, on s'assure que les termes qui composent $a_j$ par addition sont tous positif. Donc ne peuvent être égaux à zéro que si au moins $n-1$ termes  $x_j$ sont aussi égaux à zéro. Donc $|x^n| = |x|^n = g_j^n + g_k^n + f(g_0, g_1, \dots, g_{n-1})$ où $f(g_0, g_1, \dots, g_{n-1}) \neq 0$.
 
