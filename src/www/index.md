@@ -101,7 +101,7 @@ $$
 
 C'est la raison spécifique pour laquelle on choisit les nombres multicomplexes hyperboliques, et non les multicomplexes classiques. Car en choisissant les multicomplexes hyperboliques, on s'assure que les termes qui composent $a_j$ par addition sont tous positifs. Donc ne peuvent être égaux à zéro que si au moins $n-1$ termes  $x_j$ sont aussi égaux à zéro. Donc $|x^n| = |x|^n = a_j^n + a_k^n + f(a_0, a_1, \dots, a_{n-1})$ où $f(a_0, a_1, \dots, a_{n-1}) \neq 0$.
 
-Une autre façon de le voir, c'est de pendre le cas où on a que deux coefficients $x_j, x_k$ différents de $0$ dans $x$. Alors en élevant $x$ à la puissance $n$, les termes de $x^n$ auront des coefficients non-zéros à toutes les puissance de $i$. En ayant plus de deux coefficients non-zéros, on aura le même problème. Donc la seule possibilité, c'est qu'un seul coefficient soit zéro, ou tous, ce qui correspond aux deux solutions triviales $u^n + 0^n = u^n$ et $0^n + 0^n = 0^n$. 
+Une autre façon de le voir, c'est de pendre le cas où on a que deux coefficients $x_j, x_k$ différents de $0$ dans $x$. Alors en élevant $x$ à la puissance $n$, les termes de $x^n$ auront des coefficients non-zéros à toutes les puissances de $i$. En ayant plus de deux coefficients non-zéros, on aura le même problème. Donc la seule possibilité, c'est qu'un seul coefficient soit zéro, ou tous, ce qui correspond aux deux solutions triviales $u^n + 0^n = u^n$ et $0^n + 0^n = 0^n$. 
 
 
 $$
