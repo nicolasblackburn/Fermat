@@ -85,7 +85,7 @@ La pseudo norme $|x|$ est définie de la même manière que pour les nombres mul
 
 On peut généraliser la méthode au début de cet article pour trouver les points rationnels autour d'un cercle afin de trouver les points rationnels sur la surface unitaire $S = \{x \in \mathcal{M}\mathbf{H}_n: |x| = 1\}$. Ces points sont aussi des solutions de l'équation diophantienne $|\sigma| = \tau^n$, où $\sigma$ est un élément de $\mathcal{M}\mathbf{H}_n$ à coefficients entiers et $\tau$ est un entier positif.
 
-La motivation derrière cette idée est que s'il existe une solution à l'équation $u^n + v^n = w^n$, alors elles seront aussi solution de $|\sigma| = \tau^n$. Si on démontre qu'il n'y a aucune telle solution dans $|\sigma| = \tau^n$, alors nous prouvons le théorème de Fermat-Wiles.
+La motivation derrière cette idée est que s'il existe une solution à l'équation $u^n + v^n = w^n$, alors elle sera aussi solution de $|\sigma| = \tau^n$. Si on démontre qu'il n'y a aucune telle solution dans $|\sigma| = \tau^n$, alors nous prouvons le théorème de Fermat-Wiles.
 
 $$
 \mathbb{N}^n \xrightarrow{(x_0, x_1, \dots, x_{n-1}) \mapsto \sum_{j=0}^{n-1}x_j i^j} \mathcal{M}\mathbf{H}_n 
