@@ -1,9 +1,20 @@
 import { createServer } from "http";
 import { readFile, stat } from "fs/promises";
-import { join, extname } from "path";
+import { fileURLToPath } from "url";
+import { join, extname, dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const args = process.argv.slice(2); // ['--out','dist','--baseUrl','https://example.com']
+
+function getArg(name) {
+  const i = args.indexOf(name);
+  return i !== -1 ? args[i+1] : undefined;
+}
 
 const PORT = 8080;
-const ROOT = join(process.cwd(), "docs");
+const ROOT = getArg("--root") ?? join(__dirname, "bin/www");
 
 // Types MIME de base
 const MIME = {
