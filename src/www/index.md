@@ -16,8 +16,6 @@ Nous allons commencer par trouver les solutions à l'équation diophantienne $x^
 
 Nous allons tenter ici de réexpliquer le contenu de cette vidéo à notre manière, et essayer d'expliquer pourquoi la méthode de passage par les nombres complexes marche.
 
-Les points rationnels sur le cercle unitaire $a^2 + b^2 = 1$ pour tout $a, b$ réels correspondent aux solutions de l'équation diophantienne $x^2 + y^2 = z^2$. En effet si $a = \frac{p}{q}$ et $b = \frac{r}{s}$ sont deux nombres rationnels, alors $x = sp$, $y = qr$ et $z = qs$ sont des solutions de l'équation.
-
 Une méthode systématique pour trouver des solutions de notre équation diophantienne consiste à prendre un couple de nombres entiers strictement positifs $(a, b) \in \mathbb{N}^2$ et à les envoyer dans les nombres complexes par la transformation $(a,b) \mapsto a + bi$. Posons $x = a + bi$. La norme de $|x|$ est $\sqrt{a^2 + b^2}$. En élevant $x$ au carré, on obtient l'assurance que la norme de $x^2$ est entière, égale à $a^2 + b^2$. Celà fonctionne car la norme de $x$ élevée au carré est en fait son déterminant. 
 
 Voyons comment celà fonctionne. On peut représenter $i$ par la matrice 
@@ -41,7 +39,7 @@ w = & a^2 + b^2
 \end{align*}
 $$ 
 
-Nous n'avons pas complèment terminé car comment avoir l'assurance que nous pouvons trouver toutes les solutions avec cette méthode? Pour démontrer que c'est bien le cas, nous allons projeter ce point $x^2$ dans le plan complexe sur le cercle unitaire en divisant ses coordonnées par sa norme.
+Nous n'avons pas complèment terminé car comment avoir l'assurance que nous pouvons trouver toutes les solutions avec cette méthode? Pour démontrer que c'est bien le cas, nous allons projeter ce point $x^2$ dans le plan complexe sur le cercle unitaire en divisant ses coordonnées par sa norme. Les points $\frac{x^2-y^2}{x^2+y^2}$ et $\frac{2xy}{x^2+y^2}$ sont sur le cercle unitaire car $\left( \frac{x^2-y^2}{x^2+y^2} \right)^2 + \left( \frac{2xy}{x^2+y^2} \right)^2 = 1$.
 
 Maintenant considérons la droite qui le traverse et passe par l'origine du plan. La pente de cette droite est $\frac{2ab}{a^2-b^2}$. Une autre représentation de ce nombre rationnel est $\frac{2\frac{b}{a}}{1 - \frac{b}{a}^2}$. Ainsi la boucle est bouclée avec une bijection dans $\mathbb{N}^2$, définie par l'application
 

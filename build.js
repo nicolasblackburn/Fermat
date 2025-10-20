@@ -1,4 +1,3 @@
-// build.js — Node ≥18 (ESM)
 import { readdir, mkdir, cp, writeFile, readFile } from "fs/promises";
 import { join, parse, dirname } from "path";
 import { fileURLToPath } from "url";
@@ -12,8 +11,16 @@ const exec = promisify(execFile);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const SRC = join(__dirname, "src/www");
-const OUT = join(__dirname, "docs");
+const args = process.argv.slice(2); // ['--out','dist','--baseUrl','https://example.com']
+
+function getArg(name) {
+  const i = args.indexOf(name);
+  return i !== -1 ? args[i+1] : undefined;
+}
+
+const SRC = getArg('--src') ?? join(__dirname, "src/www");
+const OUT = getArg('--out') ?? join(__dirname, "bin/www");
+const baseUrl = getArg('--baseUrl') ?? "/";
 
 // HTML template
 const layoutFile = join(__dirname, "src/views/layout.ejs");
@@ -42,7 +49,8 @@ async function convertMdToHtml(srcFile, outFile) {
   const fullHtml = await htmlTemplate({
     lang,
     title, 
-    content
+    content,
+    baseUrl
   });
 
   // minify HTML
