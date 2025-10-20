@@ -8,14 +8,21 @@ const destDir = srcDir;   // on écrit dans le même répertoire
 // traduction avec Google Translate non-officielle
 async function translate(text, toLang = "en") {
   const url =
-    "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=" +
+    "https://translate.googleapis.com/translate_a/single?client=dict-chrome-ex&sl=auto&tl=" +
     toLang +
     "&dt=t&q=" +
     encodeURIComponent(text);
 
   const res = await fetch(url);
-  const json = await res.json();
-  return json[0].map(chunk => chunk[0]).join("");
+  const textData = await res.text();
+  try {
+    const json = JSON.parse(textData);
+    return json[0].map(chunk => chunk[0]).join("");
+  } catch (e) {
+    await ensureDir("bin");
+    await fs.writeFile("bin/debug.log", textData, "utf8");
+    throw e;
+  }
 }
 
 // créer le dossier si besoin

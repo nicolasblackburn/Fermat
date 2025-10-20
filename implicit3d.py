@@ -3,13 +3,20 @@ import matplotlib.pyplot as plt
 from skimage import measure
 
 # Define the 3D grid
-x = np.linspace(-2, 2, 50);
-y = np.linspace(-2, 2, 50);
-z = np.linspace(-2, 2, 50);
+x = np.linspace(0, 2, 50);
+y = np.linspace(0, 2, 50);
+z = np.linspace(0, 2, 50);
 X, Y, Z = np.meshgrid(x, y, z);
 
 # Define implicit function
-F = X**3 + Y**3 + Z**3 - 3*X*Y*Z - 1
+# F = X**3 + Y**3 + Z**3 - 3*X*Y*Z - 1
+# F = (-X)**3 + Y**3 + Z**3 - 3*(-X)*Y*Z - 1
+F = X**3 + (-Y)**3 + Z**3 - 3*X*(-Y)*Z - 1
+# F = X**3 + Y**3 + (-Z)**3 - 3*X*Y*(-Z) - 1
+# F = (-X)**3 + (-Y)**3 + Z**3 - 3*(-X)*(-Y)*Z - 1
+# F = (-X)**3 + Y**3 + (-Z)**3 - 3*(-X)*Y*(-Z) - 1
+# F = X**3 + (-Y)**3 + (-Z)**3 - 3*X*(-Y)*(-Z) - 1
+# F = (-X)**3 + (-Y)**3 + (-Z)**3 - 3*(-X)*(-Y)*(-Z) - 1
 
 # Use marching cube
 verts, faces, normals, values = measure.marching_cubes(F, level=0)
@@ -37,5 +44,5 @@ plt.gca().invert_yaxis()
 
 # Save plot
 plt.tight_layout()
-plt.savefig("implicit.png")
+plt.savefig("bin/www/implicit3d.png")
 

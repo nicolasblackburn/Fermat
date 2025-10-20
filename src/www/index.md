@@ -2,7 +2,7 @@
 
 ## Motivation
 
-En 1995, la publication de la preuve d'Andrew Wiles du dernier théorème de Fermat a surpris le monde mathématique avec fulgurance. Elle se basait sur la théorie des courbes elliptiques et le travail acharné de nombreux mathématiciens avant lui. Il s'agit d'un document de 108 pages qui utilise des outils de la théorie des nombres sophistiqués.
+En 1995, la publication de la preuve d'Andrew Wiles du [dernier théorème de Fermat](https://archive.wikiwix.com/cache/index2.php?url=http%3A%2F%2Fmath.stanford.edu%2F%7Elekheng%2Fflt%2Fwiles.pdf%2Findex.html#federation=archive.wikiwix.com&) a surpris le monde mathématique avec fulgurance. Elle se basait sur la théorie des courbes elliptiques et le travail acharné de nombreux mathématiciens avant lui. Il s'agit d'un document de 108 pages qui utilise des outils de la théorie des nombres sophistiqués.
 
 Dans cet article, je vais tenter de démontrer le théorème de Fermat-Wiles par une preuve plus facile d'approche, en utilisant une généralisation des nombres complexes introduite par Norbert Fleury en 1993, les nombres multicomplexes.
 
@@ -71,7 +71,7 @@ C'est pour cette raison que la bijection précédente nous assure que toutes les
 ## Les nombres multicomplexes hyperboliques
 
 
-Nous allons d'abord faire un petit rappel de la définition et des propriétés des nombres multicomplexes. Pour plus d'information nous invitons le lecteur à se référer à la publication de Norbert Fleury.
+Nous allons d'abord faire un petit rappel de la définition et des propriétés des nombres multicomplexes. Pour plus d'information nous invitons le lecteur à se référer à la [publication de Norbert Fleury](http://www.sciencedirect.com/science/article/pii/S0022247X83714101/pdf?md5=99c473b97d70da5a165a55850a33d7ea&pid=1-s2.0-S0022247X83714101-main.pdf).
 
 Pour définir les nombres multicomplexes $\mathcal{M}\mathbb{C}_n$, nous allons déterminer un nombre imaginaire $i$ tel que $i^n = -1$. Un nombre multicomplexe $x \in \mathcal{M}\mathbb{C}_n$ est défini comme une combinaison linéaire $\sum_{k=0}^{n-1}x_k i^k$, où les coefficients $x_k$ sont des nombres réels.
 
@@ -100,6 +100,8 @@ $$
 À cette étape, $x^n = a_0 + a_1i + \dots + a_{n-1}i^{n-1}$, ou les termes $a_j$ sont des fonctions $g_j(x_0, x_1, \dots, x_{n-1})$ des coefficients de $x$. Il est impossible de satisfaire que deux termes $a_j$ et $a_k$ soient strictement positifs, et tous les autres termes égaux à $0$. On peut le démontrer comme suit.  
 
 C'est la raison spécifique pour laquelle on choisit les nombres multicomplexes hyperboliques, et non les multicomplexes classiques. Car en choisissant les multicomplexes hyperboliques, on s'assure que les termes qui composent $a_j$ par addition sont tous positifs. Donc ne peuvent être égaux à zéro que si au moins $n-1$ termes  $x_j$ sont aussi égaux à zéro. Donc $|x^n| = |x|^n = a_j^n + a_k^n + f(a_0, a_1, \dots, a_{n-1})$ où $f(a_0, a_1, \dots, a_{n-1}) \neq 0$.
+
+(Note: nous avons seulement traiter le cas des coefficients entiers positifs ou nuls! Qu'advient-il du cas où nous permettons des coefficients négatifs? En applicant des symétries sur l'espace il est possible de ramenener les orthantes sur l'orthante à coordonnées strictement positives. En faisant cela, on affecte les signes de la formule de la norme, ou on permutte certains termes, mais on n'affecte pas le signe des coefficients de $x^n$.)
 
 Une autre façon de le voir, c'est de pendre le cas où on a que deux coefficients $x_j, x_k$ différents de $0$ dans $x$. Alors en élevant $x$ à la puissance $n$, les termes de $x^n$ auront des coefficients non-zéros à toutes les puissances de $i$. En ayant plus de deux coefficients non-zéros, on aura le même problème. Donc la seule possibilité, c'est qu'un seul coefficient soit zéro, ou tous, ce qui correspond aux deux solutions triviales $u^n + 0^n = u^n$ et $0^n + 0^n = 0^n$. 
 
