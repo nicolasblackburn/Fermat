@@ -16,7 +16,7 @@ Nous allons commencer par trouver les solutions à l'équation diophantienne $x^
 
 Nous allons tenter ici de réexpliquer le contenu de cette vidéo à notre manière, et essayer d'expliquer pourquoi la méthode de passage par les nombres complexes marche.
 
-Une méthode systématique pour trouver des solutions de notre équation diophantienne consiste à prendre un couple de nombres entiers relatifs $(a, b) \in \mathbb{Z}^2$ et à les envoyer dans les nombres complexes par la transformation $(a,b) \mapsto a + bi$. Posons $\xi = a + bi$. La norme de $\xi$ est $|\xi| = \sqrt{a^2 + b^2}$. En élevant $\xi$ au carré, on obtient l'assurance que la norme de $\xi^2$ est entière, égale à $a^2 + b^2$. Cela fonctionne car la norme de $\xi^2$ est $|\xi^2| = |\xi|^2$. Cela découle d'une identité de la norme dans les complexes, $|uv| = |u||v|$, mais nous allons voir qu'il y a un lien avec les déterminants. 
+Une méthode systématique pour trouver des solutions de notre équation diophantienne consiste à prendre un couple de nombres entiers relatifs $(a, b) \in \mathbb{Z}^2$ et à les envoyer dans les nombres complexes par la transformation $(a,b) \mapsto a + bi$. Posons $\xi = a + bi$. La norme de $\xi$ est $|\xi| = \sqrt{a^2 + b^2}$. En élevant $\xi$ au carré, on obtient l'assurance que la norme de $\xi^2$ est entière, égale à $a^2 + b^2$. Cela fonctionne car la norme de $\xi^2$ est $|\xi^2| = |\xi|^2$. Cela découle de la propriété multiplicative de la norme dans les complexes, $|uv| = |u||v|$, mais nous allons voir qu'il y a un lien avec les déterminants. 
 
 Voyons comment celà fonctionne. On peut représenter $i$ par la matrice 
 
