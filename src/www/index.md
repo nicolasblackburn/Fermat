@@ -16,7 +16,7 @@ Nous allons commencer par trouver les solutions à l'équation diophantienne $x^
 
 Nous allons tenter ici de réexpliquer le contenu de cette vidéo à notre manière, et essayer d'expliquer pourquoi la méthode de passage par les nombres complexes marche.
 
-Une méthode systématique pour trouver des solutions de notre équation diophantienne consiste à prendre un couple de nombres entiers strictement positifs $(a, b) \in \mathbb{N}^2$ et à les envoyer dans les nombres complexes par la transformation $(a,b) \mapsto a + bi$. Posons $x = a + bi$. La norme de $x$ est $|x| = \sqrt{a^2 + b^2}$. En élevant $x$ au carré, on obtient l'assurance que la norme de $x^2$ est entière, égale à $a^2 + b^2$. Cela fonctionne car la norme de $x^2$ est $|x^2| = |x|^2$. Cela découle d'une identité de la norme dans les complexes, $|uv| = |u||v|$, mais nous allons voir qu'il y a un lien avec les déterminants. 
+Une méthode systématique pour trouver des solutions de notre équation diophantienne consiste à prendre un couple de nombres entiers relatifs $(a, b) \in \mathbb{Z}^2$ et à les envoyer dans les nombres complexes par la transformation $(a,b) \mapsto a + bi$. Posons $x = a + bi$. La norme de $x$ est $|x| = \sqrt{a^2 + b^2}$. En élevant $x$ au carré, on obtient l'assurance que la norme de $x^2$ est entière, égale à $a^2 + b^2$. Cela fonctionne car la norme de $x^2$ est $|x^2| = |x|^2$. Cela découle d'une identité de la norme dans les complexes, $|uv| = |u||v|$, mais nous allons voir qu'il y a un lien avec les déterminants. 
 
 Voyons comment celà fonctionne. On peut représenter $i$ par la matrice 
 
@@ -88,10 +88,10 @@ On peut généraliser la méthode au début de cet article pour trouver les poin
 La motivation derrière cette idée est que s'il existe une solution à l'équation $u^n + v^n = w^n$, alors elle sera aussi solution de $|\sigma| = \tau^n$. Si on démontre qu'il n'y a aucune telle solution dans $|\sigma| = \tau^n$, alors nous prouvons le théorème de Fermat-Wiles.
 
 $$
-\mathbb{N}^n \xrightarrow{(x_0, x_1, \dots, x_{n-1}) \mapsto \sum_{j=0}^{n-1}x_j i^j} \mathcal{M}\mathbf{H}_n 
+\mathbb{Z}^n \xrightarrow{(x_0, x_1, \dots, x_{n-1}) \mapsto \sum_{j=0}^{n-1}x_j i^j} \mathcal{M}\mathbf{H}_n 
 $$
 
-On a $|x| = \sum_{j=0}^{n-1}x_{j}^n + f(x_0, x_1, \dots, x_{n-1})$ et $|x| \in \pm \mathbb{N}_0$.
+-On a $|x| = \sum_{j=0}^{n-1}x_{j}^n + f(x_0, x_1, \dots, x_{n-1})$ et $|x| \in \pm \mathbb{N}_0$.-
 
 $$
  \mathcal{M}\mathbf{H}_n\xrightarrow{x \mapsto x^n} \mathcal{M}\mathbf{H}_n 
@@ -123,7 +123,7 @@ $$
 $$
 
 $$
-\mathbb{Q}^{n-1} \xrightarrow{(\frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) \mapsto (x_0, x_1, \dots, x_{n-1})} \mathbb{N}^n
+\mathbb{Q}^{n-1} \xrightarrow{(\frac{x_1}{x_0}, \dots, \frac{x_{n-1}}{x_0}) \mapsto (x_0, x_1, \dots, x_{n-1})} \mathbb{Z}^n
 $$
 
 Ceci est en fait une bijection entre $\mathbb{N}^n$ et les points rationnels de la surface unitaire de $\mathcal{M}\mathbf{H}_n$. Ainsi, on exclu la possibilité de l'existence d'un nombre $x \in \mathcal{M}\mathbf{H}_n$ où $|x|^n = y^n + z^n$ et celà conclu la preuve.

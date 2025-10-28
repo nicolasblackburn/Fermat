@@ -3,15 +3,17 @@ import matplotlib.pyplot as plt
 from skimage import measure
 
 # Define the 3D grid
-x = np.linspace(0, 2, 50);
-y = np.linspace(0, 2, 50);
-z = np.linspace(0, 2, 50);
+x = np.linspace(-2, 2, 50);
+y = np.linspace(-2, 2, 50);
+z = np.linspace(-2, 2, 50);
 X, Y, Z = np.meshgrid(x, y, z);
 
 # Define implicit function
-# F = X**3 + Y**3 + Z**3 - 3*X*Y*Z - 1
+title = "X**3 + Y**3 + Z**3 - 3*X*Y*Z = 1"
+F = X**3 + Y**3 + Z**3 - 3*X*Y*Z - 1
+filename = "unit-surface-3d.png"
 # F = (-X)**3 + Y**3 + Z**3 - 3*(-X)*Y*Z - 1
-F = X**3 + (-Y)**3 + Z**3 - 3*X*(-Y)*Z - 1
+# F = X**3 + (-Y)**3 + Z**3 - 3*X*(-Y)*Z - 1
 # F = X**3 + Y**3 + (-Z)**3 - 3*X*Y*(-Z) - 1
 # F = (-X)**3 + (-Y)**3 + Z**3 - 3*(-X)*(-Y)*Z - 1
 # F = (-X)**3 + Y**3 + (-Z)**3 - 3*(-X)*Y*(-Z) - 1
@@ -38,11 +40,11 @@ ax.plot_trisurf(verts_transformed[:, 0], verts_transformed[:, 1], verts_transfor
 ax.set_xlabel("X")
 ax.set_ylabel("Y")
 ax.set_zlabel("Z")
-ax.set_title("Implicit Surface")
+ax.set_title(title)
 
 plt.gca().invert_yaxis()
 
 # Save plot
 plt.tight_layout()
-plt.savefig("bin/www/implicit3d.png")
+plt.savefig("bin/www/" + filename)
 
