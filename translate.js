@@ -6,23 +6,14 @@ const srcDir = "src/www"; // dossiers source contenant Markdown FR et éventuell
 const destDir = srcDir;   // on écrit dans le même répertoire
 
 // traduction avec Google Translate non-officielle
-async function translate(text, toLang = "en") {
-  const url =
-    "https://translate.googleapis.com/translate_a/single?client=dict-chrome-ex&sl=auto&tl=" +
-    toLang +
-    "&dt=t&q=" +
-    encodeURIComponent(text);
-
-  const res = await fetch(url);
-  const textData = await res.text();
-  try {
-    const json = JSON.parse(textData);
-    return json[0].map(chunk => chunk[0]).join("");
-  } catch (e) {
-    await ensureDir("bin");
-    await fs.writeFile("bin/debug.log", textData, "utf8");
-    throw e;
-  }
+async function translate(text, toLang) {
+  const res = await fetch("http://localhost:3000/translate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text, to: toLang })
+  });
+  const data = await res.json();
+  return data.translated;
 }
 
 // créer le dossier si besoin
