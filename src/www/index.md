@@ -51,10 +51,10 @@ $$
 
 Nous n'avons pas complèment terminé car comment avoir l'assurance que nous pouvons trouver toutes les solutions avec cette méthode? Pour démontrer que c'est bien le cas, nous allons prendre ce point $\xi^2$ dans le plan complexe et le projeter sur le cercle unitaire en divisant ses coordonnées par sa norme. Ainsi, le point rationnel $\left( \frac{a^2-b^2}{a^2+b^2}, \frac{2ab}{a^2+b^2} \right)$ est sur le cercle unitaire car $\left( \frac{a^2-b^2}{a^2+b^2} \right)^2 + \left( \frac{2ab}{a^2+b^2} \right)^2 = 1$.
 
-Maintenant considérons la droite qui le traverse et passe par l'origine du plan. La pente de cette droite est $\frac{2ab}{a^2-b^2}$. En multipliant le numérateur et le dénominateur par $\frac{1}{a^2}$, on obtient une autre représentation de ce nombre rationnel $\frac{2\frac{b}{a}}{1 - \frac{b}{a}^2}$. Ainsi la boucle est bouclée avec une bijection dans $\mathbb{Z}^2$, définie par l'application
+Maintenant considérons la droite qui le traverse et passe par l'origine du plan. La pente de cette droite est $\frac{2ab}{a^2-b^2}$. En multipliant le numérateur et le dénominateur par $\frac{1}{a^2}$, on obtient une autre représentation de ce nombre rationnel $\frac{2\frac{b}{a}}{1 - \left(\frac{b}{a}\right)^2}$. Ainsi la boucle est bouclée avec une bijection dans $\mathbb{Z}^2$, définie par l'application
 
 $$
-\frac{2\frac{b}{a}}{1 - \frac{b}{a}^2}
+\frac{2\frac{b}{a}}{1 - \left(\frac{b}{a}\right)^2}
 \mapsto
 (a, b)
 $$
@@ -184,11 +184,11 @@ $$
 Ainsi $\xi^3 = \beta_0 + \beta_1 e + \beta_2 e^2$ est un nouveau nombre multicomplexe membre de $\MC_3$. Appelons-le $\xi'$. En subsituant les coefficients $\beta_j$ dans la formule de la norme, on obtient $\norm {\xi'} = \sqrt[3]{\beta_0^3 - \beta_1^3 + \beta_2^3 + 3\beta_0\beta_1\beta_2}$. Rappelons-nous que nous avons déterminé auparavant que $\norm {\xi^3} = \xi_0^3 - \xi_1^3 + \xi_2^3 + 3\xi_0\xi_1\xi_2$. Posons $\tau = \norm {\xi^3}$ et observons que c'est un nombre entier. Ainsi, en élevant $\norm{\xi^3}$ au cube, on obtient
 
 $$
-\begin{align*}
-\norm{\xi'}^3 & = \norm{\xi^3}^3 \\
-\left( \sqrt[3]{\beta_0^3 - \beta_1^3 + \beta_2^3 + 3\beta_0\beta_1\beta_2} \right)^3 & = \tau^3 \\
-\beta_0^3 - \beta_1^3 + \beta_2^3 + 3\beta_0\beta_1\beta_2 & = \tau^3
-\end{align*}
+\begin{gather*}
+\norm{\xi'}^3 = \norm{\xi^3}^3 \\
+\left( \sqrt[3]{\beta_0^3 - \beta_1^3 + \beta_2^3 + 3\beta_0\beta_1\beta_2} \right)^3 = \tau^3 \\
+\beta_0^3 - \beta_1^3 + \beta_2^3 + 3\beta_0\beta_1\beta_2 = \tau^3
+\end{gather*}
 $$
 
 où, tous les $\beta_j$ sont entiers et $\tau$ est entier. Donc $(\beta_0, \beta_1, \beta_3, \tau)$ est un quadruplet hyper pythagoricien car $\norm {\xi'}^3 = \tau^3$.
@@ -208,29 +208,29 @@ $$
 Ensuite on élève $\xi$ à la puissance $n$:
 
 $$
- \MC_n\xrightarrow{\xi \mapsto \xi^n} \MC_n \times \Sgn^n 
+ \MC_n\xrightarrow{\xi \mapsto \xi^n} \MC_n
 $$
 
 À cette étape, on a un nombre $\xi' = \xi^n$, $\xi' \in \MC_n$ et $\xi' = \beta_0 + \beta_1e + \dots + \beta_{n-1}e^{n-1}$, où les termes $\beta_j$ sont des fonctions $\mathbb Z ^n \rightarrow \mathbb Z$, $\beta_j(\xi_0, \xi_1, \dots, \xi_{n-1})$ dépendantes des composantes de $\xi$. Nous avons aussi une solution à l'équation diophantienne $\norm {\xi'}^n = \tau^n$ en posant $\tau = \norm{\xi^n}$.
 
-Les fonctions $\beta_j$ sont homogènes car elles résultent de l'élévation à la puissance $n$ de $\xi$. Alors en multipliant $\xi^n$
+Les fonctions $\beta_j$ sont homogènes car elles résultent de l'élévation à la puissance $n$ de $\xi$. Alors en multipliant $\xi^n$ par $\frac{1}{\xi_0^n}$:
 
 $$
- \MC_n \times \Sgn^n \xrightarrow{
+ \MC_n \xrightarrow{
    \sum_{j=0}^{n-1}{\beta_j(\xi_0, \xi_1, \dots, \xi_{n-1})e^j}
    \mapsto
    \sum_{j=0}^{n-1}{\beta_j(1, \frac{\xi_1}{\xi_0}, \dots, \frac{\xi_{n-1}}{\xi_0})e^j}
- } \MC_n \times \Sgn^n  
+ } \MC_n
 $$
 
 $$
- \MC_n \times \Sgn^n \xrightarrow{ 
-\sum_{j=0}^{n-1}{g_j(1, \frac{a_1}{a_0}, \dots, \frac{a_{n-1}}{a_0})e^j}
-\mapsto (\frac{a_1}{a_0}, \dots, \frac{a_{n-1}}{a_0})} \QxSgn{n} 
+ \MC_n \xrightarrow{ 
+\sum_{j=0}^{n-1}{\beta_j(1, \frac{\xi_1}{\xi_0}, \dots, \frac{\xi_{n-1}}{\xi_0})e^j}
+\mapsto (\frac{\xi_1}{\xi_0}, \dots, \frac{\xi_{n-1}}{\xi_0})} \mathbb Q^{n-1}
 $$
 
 $$
-\QxSgn{n} \xrightarrow{(\frac{a_1}{a_0}, \dots, \frac{a_{n-1}}{a_0}) \mapsto (a_0, a_1, \dots, a_{n-1})} \mathbb{Z}^n
+\mathbb Q ^{n-1} \xrightarrow{(\frac{\xi_1}{\x8_0}, \dots, \frac{\xi_{n-1}}{\xi_0}) \mapsto (\xi_0, \xi_1, \dots, \xi_{n-1})} \mathbb{Z}^n
 $$
 
 Ceci est en fait une bijection entre $\mathbb{Z}^n$ et les points rationnels de la surface unitaire de $\MC_n$. Il est impossible de satisfaire que deux termes $b_j$ et $b_k$ soient strictement positifs, et tous les autres termes égaux à $0$ (à démontrer). Ainsi, on exclu la possibilité de l'existence d'un nombre $\xi \in \MC_n$ où $\norm \xi ^n = y^n + z^n$ et cela conclu la preuve.
