@@ -71,7 +71,7 @@ C'est pour cette raison que la bijection précédente nous assure que toutes les
 
 ## Les nombres multicomplexes
 
-Nous allons d'abord faire un petit rappel de la définition et des propriétés des nombres multicomplexes. Pour plus d'information nous invitons le lecteur à se référer à la [publication de Norbert Fleury](http://www.sciencedirect.com/science/article/pii/S0022247X83714101/pdf?md5=99c473b97d70da5a165a55850a33d7ea&pid=1-s2.0-S0022247X83714101-main.pdf).
+Nous allons d'abord faire un petit rappel de la définition et des propriétés des nombres multicomplexes. Pour plus d'information nous invitons le lecteur à se référer à [l'article original de Norbert Fleury](http://www.sciencedirect.com/science/article/pii/S0022247X83714101/pdf?md5=99c473b97d70da5a165a55850a33d7ea&pid=1-s2.0-S0022247X83714101-main.pdf).
 
 Pour définir les nombres multicomplexes $\newcommand{MC}{\mathcal{M}\mathbb{C}} \MC_n$, nous allons déterminer un nombre imaginaire $e$ tel que $e^n = -1$. Un nombre multicomplexe $\xi \in \MC_n$ est défini comme une combinaison linéaire $\sum_{k=0}^{n-1}\xi_k e^k$, où les composantes $\xi_k$ sont des nombres réels.
 
@@ -99,32 +99,129 @@ X = \begin{pmatrix}
 \end{pmatrix}
 $$
 
-
-## Les tuples pythagoriciens
-
-On peut généraliser la méthode au début de cet article pour trouver les triplets pythagoriciens dans un espace euclidien à une méthode pour trouver les $(n+1)$-uplets de nombres entiers solutions de l'équation diophantienne $\norm \xi = \tau^n$, où $\xi$ est un élément de $\MC_n$ à coefficients entiers et $\tau$ est un entier positif.
-
-La motivation derrière cette idée est que s'il existe une solution à l'équation $x^n + y^n = z^n$, alors elle sera aussi solution de $\norm \xi = \tau^n$. Si on démontre qu'il n'y a aucune telle solution pour $\norm \xi = \tau^n$, alors nous prouvons le théorème de Fermat-Wiles.
+Les composantes de cette matrice sont $X_{i,j} = s(i - j) \xi_{j - i}$, où $s(x) = -1$, si $x < 0$, $1$ sinon. Par convention, lorsque $j < i$, $j - i = n + j - i$. En utilisant la [formule du déterminant d'une matrice carrée de Leibniz](https://fr.wikipedia.org/wiki/Formule_de_Leibniz)
 
 $$
-\mathbb{Z}^n \xrightarrow{(a_0, a_1, \dots, a_{n-1}) \mapsto \sum_{j=0}^{n-1}a_j e^j} \MC_n 
+\begin{align*}
+\norm \xi & = \sqrt[n]{\sum_{\sigma \in S_n}{ \epsilon(\sigma) \prod_{j = 1}^{n}{ s\left(j - \sigma(j) \right) \xi_{\sigma(j) - j}}}}
+\end{align*}
 $$
+
+## Les tuples hyper pythagoriciens
+
+On peut généraliser la méthode au début de cet article pour trouver les triplets pythagoriciens dans un espace euclidien à une méthode pour trouver les $(n+1)$-uplets de nombres entiers solutions de l'équation diophantienne $\norm \xi^n = \tau^n$, où $\xi$ est un élément de $\MC_n$ à coefficients entiers et $\tau$ est un entier positif. Nous allons appeler ces tuples hyper pythagoriciens, pour les distinguer des tuples dans l'espace euclidien $\mathbb{R}^n$ qui seraient par exemple solution de l'équation diophantienne $x_0^2 + x_1^2 + \dots + x_{n-1}^2 = y^2$.
+
+La motivation derrière cette idée est que s'il existe une solution à l'équation $x^n + y^n = z^n$, alors elle sera aussi solution de $\norm \xi^n = \tau^n$ (donner la démonstration). Si on démontre qu'il n'y a aucune telle solution pour $\norm \xi^n = \tau^n$, alors nous prouvons le théorème de Fermat-Wiles.
+
+Nous allons commencer par montrer le cas particulier $n = 3$ pour nous réchauffer. On cherche à démontrer qu'il n'y a pas de triplet entier $(x, y, z)$ tels que $x^3 + y^3 = z^3$. Pour ce faire nous allons nous servir des nombres multicomplexes d'ordre 3, $\MC_3$. Prennons un élément $\xi \in \MC_3$, où $\xi = \xi_0 + \xi_1 e + \xi_2 e^2$ et tous les $\xi_j \in \mathbb{Z}$. La norme de $\xi$ est $\norm \xi = \sqrt[3]{\xi_0^3 - \xi_1^3 + \xi_2^3 + 3\xi_0\xi_1\xi_2}$. Puisque la norme est multiplicative nous avons que la norme de $\xi^3$ est $\norm{\xi^3} = \xi_0^3 - \xi_1^3 + \xi_2^3 + 3\xi_0\xi_1\xi_2$. 
+
+Développons $\xi^3$ en utilisant la [formule du multinôme de Newton](https://fr.wikipedia.org/wiki/Formule_du_multin%C3%B4me_de_Newton):
+
+$$
+\begin{align*}
+\xi^3 & = (\xi_0 + \xi_1 e + \xi_2 e^2)^3 \\
+& = \binom{3}{3}\left(\xi_0^3 + (\xi_1 e)^3 + (\xi_2 e^2)^3\right)
+  + \binom{3}{2,1}\left(
+      \xi_0^2(\xi_1 e) + \xi_0^2(\xi_2 e^2) 
+    + (\xi_1 e)^2\xi_0 + (\xi_1 e)^2(\xi_2 e^2) 
+    + (\xi_2 e^2)^2\xi_0 + (\xi_2 e^2)^2(\xi_1 e) \right)
+  + \binom{3}{1,1,1}\left(\xi_0 (\xi_1 e) (\xi_2 e^2)\right) \\
+& = \frac{3!}{3!}\left(\xi_0^3 + \xi_1^3 e^3 + \xi_2^3 e^6 \right)
+  + \frac{3!}{2! 1!}\left(
+      \xi_0^2\xi_1 e + \xi_0^2\xi_2 e^2 
+    + \xi_0 \xi_1^2 e^2 + \xi_1^2 \xi_2 e^4 
+    + \xi_0 \xi_2^2 e^4 + \xi_1 \xi_2^2 e^5 \right)
+  + \frac{3!}{1! 1! 1!}\left(\xi_0 \xi_1 \xi_2 e^3 \right) \\
+& = \xi_0^3 - \xi_1^3 + \xi_2^3
+  + 3 \left(
+      \xi_0^2\xi_1 e + \xi_0^2\xi_2 e^2 
+    + \xi_0 \xi_1^2 e^2 - \xi_1^2 \xi_2 e 
+    - \xi_0 \xi_2^2 e - \xi_1 \xi_2^2 e^2 \right)
+  - 6 \left(\xi_0 \xi_1 \xi_2 \right) \\
+& = \xi_0^3 - \xi_1^3 + \xi_2^3
+  - 6 \xi_0 \xi_1 \xi_2
+  + 3 \xi_0^2\xi_1 e 
+  - 3 \xi_1^2 \xi_2 e 
+  - 3 \xi_0 \xi_2^2 e 
+  + 3 \xi_0^2\xi_2 e^2 
+  + 3 \xi_0 \xi_1^2 e^2 
+  - 3 \xi_1 \xi_2^2 e^2 
+  \\
+& = \xi_0^3 - \xi_1^3 + \xi_2^3
+  - 6 \xi_0 \xi_1 \xi_2
+  + 3 \left( 
+      \xi_0^2\xi_1
+    - \xi_1^2 \xi_2
+    - \xi_0 \xi_2
+    \right) e
+  + 3 \left(
+      \xi_0^2\xi_2 
+    + \xi_0 \xi_1^2
+    - \xi_2 \xi_1
+    \right) e^2
+\end{align*}
+$$
+
+Posons
+
+$$
+\begin{align*}
+\beta_0 & = \xi_0^3 - \xi_1^3 + \xi_2^3
+  - 6 \xi_0 \xi_1 \xi_2\\
+\beta_1 & = 3 \left( 
+      \xi_0^2\xi_1
+    - \xi_1^2 \xi_2
+    - \xi_0 \xi_2^2
+    \right) \\
+\beta_2 & = 3 \left(
+      \xi_0^2\xi_2 
+    + \xi_0 \xi_1^2
+    - \xi_2^2 \xi_1
+    \right)\\
+\end{align*}
+$$
+
+Ainsi $\xi^3 = \beta_0 + \beta_1 e + \beta_2 e^2$ est un nouveau nombre multicomplexe membre de $\MC_3$. Appelons-le $\xi'$. En subsituant les coefficients $\beta_j$ dans la formule de la norme, on obtient $\norm {\xi'} = \sqrt[3]{\beta_0^3 - \beta_1^3 + \beta_2^3 + 3\beta_0\beta_1\beta_2}$. Rappelons-nous que nous avons déterminé auparavant que $\norm {\xi^3} = \xi_0^3 - \xi_1^3 + \xi_2^3 + 3\xi_0\xi_1\xi_2$. Posons $\tau = \norm {\xi^3}$ et observons que c'est un nombre entier. Ainsi, en élevant $\norm{\xi^3}$ au cube, on obtient
+
+$$
+\begin{align*}
+\norm{\xi'}^3 & = \norm{\xi^3}^3 \\
+\left( \sqrt[3]{\beta_0^3 - \beta_1^3 + \beta_2^3 + 3\beta_0\beta_1\beta_2} \right)^3 & = \tau^3 \\
+\beta_0^3 - \beta_1^3 + \beta_2^3 + 3\beta_0\beta_1\beta_2 & = \tau^3
+\end{align*}
+$$
+
+où, tous les $\beta_j$ sont entiers et $\tau$ est entier. Donc $(\beta_0, \beta_1, \beta_3, \tau)$ est un quadruplet hyper pythagoricien car $\norm {\xi'}^3 = \tau^3$.
+
+De même que pour les triplets pythagoriciens, on se demande s'il existe d'autres quadruplets hyper pythagoriciens que l'on ne trouve pas par cette méthode et nous allons voir que la réponse est négative.
+
+## Cas général en vrac
+
+De manière analogue, la méthode précédente peut être appliquée pour trouver des $(n+1)$-uplets de nombres qui satisfont l'équation diophantienne $\norm{\xi}^n = \tau^n$, pour $\xi \in \MC_n$ à coefficients entiers et $\tau$ un entier positif. Nous allons maintenant démontrer que toutes les solutions diophantiennes de cette équation peuvent être trouvées de cette manière.
+
+On prend d'abord un élément $\xi \in \MC_n$ à coefficients entiers:
+
+$$
+\mathbb{Z}^n \xrightarrow{(\xi_0, \xi_1, \dots, \xi_{n-1}) \mapsto \sum_{j=0}^{n-1}\xi_j e^j} \MC_n 
+$$
+
+Ensuite on élève $\xi$ à la puissance $n$:
 
 $$
  \MC_n\xrightarrow{\xi \mapsto \xi^n} \MC_n \times \Sgn^n 
 $$
 
-À cette étape, $\xi^n = b_0 + b_1e + \dots + b_{n-1}e^{n-1}$, où les termes $b_j$ sont des fonctions $g_j(a_0, a_1, \dots, a_{n-1})$ des composantes de $\xi$. Il est impossible de satisfaire que deux termes $b_j$ et $b_k$ soient strictement positifs, et tous les autres termes égaux à $0$. 
+À cette étape, on a un nombre $\xi' = \xi^n$, $\xi' \in \MC_n$ et $\xi' = \beta_0 + \beta_1e + \dots + \beta_{n-1}e^{n-1}$, où les termes $\beta_j$ sont des fonctions $\mathbb Z ^n \rightarrow \mathbb Z$, $\beta_j(\xi_0, \xi_1, \dots, \xi_{n-1})$ dépendantes des composantes de $\xi$. Nous avons aussi une solution à l'équation diophantienne $\norm {\xi'}^n = \tau^n$ en posant $\tau = \norm{\xi^n}$.
+
+Les fonctions $\beta_j$ sont homogènes car elles résultent de l'élévation à la puissance $n$ de $\xi$. Alors en multipliant $\xi^n$
 
 $$
  \MC_n \times \Sgn^n \xrightarrow{
-   \sum_{j=0}^{n-1}{g_j(a_0, a_1, \dots, a_{n-1})e^j}
+   \sum_{j=0}^{n-1}{\beta_j(\xi_0, \xi_1, \dots, \xi_{n-1})e^j}
    \mapsto
-   \sum_{j=0}^{n-1}{g_j(1, \frac{a_1}{a_0}, \dots, \frac{a_{n-1}}{a_0})e^j}
+   \sum_{j=0}^{n-1}{\beta_j(1, \frac{\xi_1}{\xi_0}, \dots, \frac{\xi_{n-1}}{\xi_0})e^j}
  } \MC_n \times \Sgn^n  
 $$
-
-Les fonctions $g_0, g_1, \cdots, g_{n-1}$ sont homogènes car elles résultent de la multiplication des termes de $\xi$ dans $\xi^n$.
 
 $$
  \MC_n \times \Sgn^n \xrightarrow{ 
@@ -136,4 +233,4 @@ $$
 \QxSgn{n} \xrightarrow{(\frac{a_1}{a_0}, \dots, \frac{a_{n-1}}{a_0}) \mapsto (a_0, a_1, \dots, a_{n-1})} \mathbb{Z}^n
 $$
 
-Ceci est en fait une bijection entre $\mathbb{Z}^n$ et les points rationnels de la surface unitaire de $\MC_n$. Ainsi, on exclu la possibilité de l'existence d'un nombre $\xi \in \MC_n$ où $\norm \xi ^n = y^n + z^n$ et cela conclu la preuve.
+Ceci est en fait une bijection entre $\mathbb{Z}^n$ et les points rationnels de la surface unitaire de $\MC_n$. Il est impossible de satisfaire que deux termes $b_j$ et $b_k$ soient strictement positifs, et tous les autres termes égaux à $0$ (à démontrer). Ainsi, on exclu la possibilité de l'existence d'un nombre $\xi \in \MC_n$ où $\norm \xi ^n = y^n + z^n$ et cela conclu la preuve.
