@@ -14,7 +14,7 @@ Nous allons commencer par trouver les solutions à l'équation diophantienne $x^
 
 Nous allons tenter ici de réexpliquer le contenu de cette vidéo à notre manière, et essayer d'expliquer pourquoi la méthode de passage par les nombres complexes marche.
 
-Une méthode systématique pour trouver des solutions de notre équation diophantienne consiste à prendre un couple de nombres entiers relatifs $(a, b) \in \mathbb{Z}^2$ et à les envoyer dans les nombres complexes par la transformation $(a,b) \mapsto a + bi$. Posons $\xi = a + bi$. La norme de $\xi$ est $\newcommand{\norm}[1]{\lVert #1 \rVert}
+Une méthode systématique pour trouver des solutions de notre équation diophantienne consiste à prendre un couple de nombres entiers relatifs premiers entre eux $(a, b) \in \mathbb{Z}^2$ et à les envoyer dans les nombres complexes par la transformation $(a,b) \mapsto a + bi$. Posons $\xi = a + bi$. La norme de $\xi$ est $\newcommand{\norm}[1]{\lVert #1 \rVert}
  \norm \xi = \sqrt{a^2 + b^2}$. En élevant $\xi$ au carré, on obtient l'assurance que la norme de $\xi^2$ est entière, égale à $a^2 + b^2$. Cela fonctionne car la norme dans les complexes est multiplicative, c'est à dire que pour deux nombres complexes $u$ et $v$, $\norm {uv} = \norm u \norm v$. Nous allons voir qu'il y a un lien avec les déterminants. 
 
 Voyons comment cela fonctionne. On peut représenter $i$ par la matrice 
@@ -49,7 +49,7 @@ z = & a^2 + b^2
 \end{align*}
 $$ 
 
-Nous n'avons pas complèment terminé car comment avoir l'assurance que nous pouvons trouver toutes les solutions avec cette méthode? Pour démontrer que c'est bien le cas, nous allons prendre ce point $\xi^2$ dans le plan complexe et le projeter sur le cercle unitaire en divisant ses coordonnées par sa norme. Ainsi, le point rationnel $\left( \frac{a^2-b^2}{a^2+b^2}, \frac{2ab}{a^2+b^2} \right)$ est sur le cercle unitaire car $\left( \frac{a^2-b^2}{a^2+b^2} \right)^2 + \left( \frac{2ab}{a^2+b^2} \right)^2 = 1$.
+Nous n'avons pas complèment terminé car comment avoir l'assurance que nous pouvons trouver toutes les solutions avec cette méthode? En fait, nous ne les trouvons pas toutes, mais tout triplet pythagoricien est un Pour démontrer que c'est bien le cas, nous allons prendre ce point $\xi^2$ dans le plan complexe et le projeter sur le cercle unitaire en divisant ses coordonnées par sa norme. Ainsi, le point rationnel $\left( \frac{a^2-b^2}{a^2+b^2}, \frac{2ab}{a^2+b^2} \right)$ est sur le cercle unitaire car $\left( \frac{a^2-b^2}{a^2+b^2} \right)^2 + \left( \frac{2ab}{a^2+b^2} \right)^2 = 1$.
 
 Maintenant considérons la droite qui le traverse et passe par l'origine du plan. La pente de cette droite est $\frac{2ab}{a^2-b^2}$. En multipliant le numérateur et le dénominateur par $\frac{1}{a^2}$, on obtient une autre représentation de ce nombre rationnel $\frac{2\frac{b}{a}}{1 - \left(\frac{b}{a}\right)^2}$. Ainsi la boucle est bouclée avec une bijection dans $\mathbb{Z}^2$, définie par l'application
 
@@ -99,13 +99,75 @@ X = \begin{pmatrix}
 \end{pmatrix}
 $$
 
-Les composantes de cette matrice sont $X_{i,j} = s(i - j) \xi_{j - i}$, où $s(x) = -1$, si $x < 0$, $1$ sinon. Par convention, lorsque $j < i$, $j - i = n + j - i$. En utilisant la [formule du déterminant d'une matrice carrée de Leibniz](https://fr.wikipedia.org/wiki/Formule_de_Leibniz)
+Les composantes de cette matrice sont $\DeclareMathOperator{sgn}{sgn_{+}} X_{i,j} = \sgn(i - j) \xi_{j - i}$, où $\sgn(x) = -1$, si $x < 0$, $1$ sinon. Par convention, lorsque $j < i$, $j - i = n + j - i$. En utilisant la [formule du déterminant d'une matrice carrée de Leibniz](https://fr.wikipedia.org/wiki/Formule_de_Leibniz)
 
 $$
 \begin{align*}
-\norm \xi & = \sqrt[n]{\sum_{\sigma \in S_n}{ \epsilon(\sigma) \prod_{j = 1}^{n}{ s\left(j - \sigma(j) \right) \xi_{\sigma(j) - j}}}}
+\norm \xi & = \sqrt[n]{\sum_{\sigma \in S_n}{ \epsilon(\sigma) \prod_{j = 0}^{n - 1}{ \sgn \left(j - \sigma(j) \right) \xi_{\sigma(j) - j}}}}
 \end{align*}
 $$
+
+$$
+\norm \xi = \sqrt[n]{\left(\sum{\xi_j^n}\right) + \text{R.D.T.}}
+$$
+
+Puissance $n$ de $\xi$:
+
+$$
+\DeclareMathOperator{Part}{Part}
+\DeclareMathOperator{Perm}{Perm}
+\begin{align*}
+\xi^n & = \sum_{p \in \Part(n)} {
+  \sum_{\sigma \in \Perm(n, \ell(p))} {
+    \binom{n}{p} \prod_{j = 0}^{\ell(p) - 1}{\left(\xi_{\sigma(j)} e^{\sigma(j)} \right)^{p_j}}
+  }
+} \\
+\xi^n & = \sum_{p \in \Part(n)} {
+  \sum_{\sigma \in \Perm(n, \ell(p))} {
+    \binom{n}{p} \prod_{j = 0}^{\ell(p) - 1}{\xi_{\sigma(j)}^{p_j} e^{\sigma(j) p_j}}
+  }
+} \\
+\xi^n & = \sum_{p \in \Part(n)} {
+  \sum_{\sigma \in \Perm(n, \ell(p))} {
+    \binom{n}{p} \left( \prod_{j = 0}^{\ell(p) - 1}{\xi_{\sigma(j)}^{p_j}}\right)\left( \prod_{j = 0}^{\ell(p) - 1} {e^{\sigma(j) p_j}}\right)
+  }
+} \\
+\xi^n & = \sum_{p \in \Part(n)} {
+  \sum_{\sigma \in \Perm(n, \ell(p))} {
+    \binom{n}{p} \left( \prod_{j = 0}^{\ell(p) - 1}{\xi_{\sigma(j)}^{p_j}}\right) e^{E(p, \sigma)}
+  }
+} \\
+\xi^n & = \sum_{p \in \Part(n)} {
+  \sum_{\sigma \in \Perm(n, \ell(p))} {
+    (-1)^{\lfloor \frac{E(p, \sigma)}{2} \rfloor} \binom{n}{p} \left( \prod_{j = 0}^{\ell(p) - 1}{\xi_{\sigma(j)}^{p_j}}\right) e^{E(p, \sigma) \bmod n}
+  }
+} \\
+\end{align*}
+$$
+
+où
+
+$$
+E(p, \sigma) = \sum_{j = 0}^{\ell(p) - 1}{\sigma(j)p_j}
+$$
+
+Composantes de $\xi^n$:
+
+$$
+(\xi^n)_i = \sum_{p \in \Part(n)} {
+   \sum_{\sigma \in \Perm(n, \ell(p))}^{E(p, \sigma) \equiv i \pmod n} {
+		(-1)^{\lfloor \frac{E(p, \sigma)}{2} \rfloor} \binom{n}{p} \prod_{j = 0}^{\ell(p) - 1}{\xi_{\sigma(j)}^{p_j}}
+  }
+}
+$$
+
+$$
+\begin{align*}
+(\xi^n)_0 & = \left( \sum {\xi_j^n} \right) + \text{R.D.T.} \\
+(\xi^n)_i & = \left( \sum {\xi_{i + j}^{n-1}\xi_{i + j + 1}} \right) + \text{R.D.T.}
+\end{align*}
+$$
+
 
 ## Les tuples hyper pythagoriciens
 
@@ -230,7 +292,7 @@ $$
 $$
 
 $$
-\mathbb Q ^{n-1} \xrightarrow{(\frac{\xi_1}{\x8_0}, \dots, \frac{\xi_{n-1}}{\xi_0}) \mapsto (\xi_0, \xi_1, \dots, \xi_{n-1})} \mathbb{Z}^n
+\mathbb Q ^{n-1} \xrightarrow{(\frac{\xi_1}{\xi_0}, \dots, \frac{\xi_{n-1}}{\xi_0}) \mapsto (\xi_0, \xi_1, \dots, \xi_{n-1})} \mathbb{Z}^n
 $$
 
 Ceci est en fait une bijection entre $\mathbb{Z}^n$ et les points rationnels de la surface unitaire de $\MC_n$. Il est impossible de satisfaire que deux termes $b_j$ et $b_k$ soient strictement positifs, et tous les autres termes égaux à $0$ (à démontrer). Ainsi, on exclu la possibilité de l'existence d'un nombre $\xi \in \MC_n$ où $\norm \xi ^n = y^n + z^n$ et cela conclu la preuve.
