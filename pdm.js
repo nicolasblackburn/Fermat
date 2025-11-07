@@ -1,20 +1,4 @@
-class Poly {
-	constructor(degree, ...terms) {
-		this._degree = degree;
-		this._terms = terms;
-	}
-	_sort() {
-		const groupedTerms = [];
-		for (let i = 0; i < this._terms.length;) {
-			const term = [];
-			for (; i < this._degree + 1; i++) {
-				term.push(this._terms[i] ?? 0);
-			}
-			groupedTerms.push(term);
-		}
-		
-	}
-}
+const util = require("util");
 
 function pad(xs, n) {
 	while (xs.length < n) {
@@ -48,7 +32,7 @@ function sort(xs) {
 
 function mult(a, b) {
 	const n = Math.max(a.length, b.length);
-	const c = Array(n).fill(0)];
+	const c = Array(n).fill(0);
 	for (let i = 0; i < n; i++) {
 		if (i === 0) {
 			c[i] = (a[i] ?? 0) * (b[i] ?? 0);
@@ -155,6 +139,7 @@ function tostr(x, alpha = "abcdefghijklmnopqrstuvwxyz") {
 		}, "");
 }
 
+// On peut calculer le signe à partir de la permutation
 function sgnchoosek(list, k = list.length) {
 	if (k > list.length || k < 1) {
 		return [[1, []]];
@@ -198,3 +183,93 @@ function det(n) {
 	return groupTerms(flatTerms);
 }
 
+function mhndet(n, z) {
+	let x = 0;
+	const perms = sgnchoosek([...z.keys()], n);
+	for (const [sgn, perm] of perms) {
+		let u = sgn;
+		for (let i = 0; i < n; i++) {
+			u *= z[(n + perm[i] - i) % n];
+		}
+		x += u;
+	}
+	return x;
+}
+
+function mhntostr(n, z) {
+	let s = "";
+	for (let i = 0; i < n; i++) {
+		s += s ? " + " : "";
+		s += z[i] + (i > 0 ? "e" + (i > 1 ? sup(i) : "") : "");
+	}
+	return s;
+}
+
+function mhnmult(n, u, v) {
+	let z = Array(n).fill(0);
+	for (let i = 0; i < n; i++) {
+		for (let j = 0; j < n; j++) {
+			z[(i + j) % n] += u[i] * v[j];
+		}
+	}
+	return z;
+}
+
+function mhnpow(n, x, p) {
+	let z = [1, ...x.slice(1).fill(0)];
+	for (let i = 0; i < p; i++) {
+		z = mhnmult(n, z, x);
+	}
+	return z;
+}
+
+function part(z, i) {
+  const n = z.length;
+  return z
+    .filter(([_, j]) => 0 === (j - i) % n)
+    .map(([coeff, _, ...r]) => [coeff, ...r]);
+}
+
+function poly(x) {
+  return {
+    _x: x,
+    pow(n) {
+      return poly(pow(this._x, n));
+    },
+    add(x, ...xs) {
+      return poly(groupTerms([...this._x, ...x._x]));
+    },
+    mult(x, ...xs) {
+      return poly(conv(this._x, x._x));
+    },
+    [util.inspect.custom]() {
+      return tostr(this._x);
+    }
+  };
+}
+
+function mcn(
+  n, 
+  z = Array(n).fill([]).map((_, i) => [1,i,...Array(i).fill(0), 1])
+) {
+  const {floor} = Math;
+  z = z.map(([c, e, ...r]) => [floor(e / n) % 2 ? -c : c, (e % n), ...r]);
+  return {
+    _z: z,  
+    add(z, ...zs) {
+    },
+    mult(z, ...zs) {
+    },
+    pow(n) {
+      return mcn(n, pow(this._z, n));
+    },
+    part(i) {
+      return poly(part(this._z, i));
+    },
+    det() {
+    },
+    [util.inspect.custom]() {
+      return tostr(this._z, "eabcdfghijklmnopqrstuvwxyz");
+    }
+  }
+}

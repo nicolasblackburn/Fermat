@@ -14,7 +14,7 @@ Nous allons commencer par trouver les solutions à l'équation diophantienne $x^
 
 Nous allons tenter ici de réexpliquer le contenu de cette vidéo à notre manière, et essayer d'expliquer pourquoi la méthode de passage par les nombres complexes marche.
 
-Une méthode systématique pour trouver des solutions de notre équation diophantienne consiste à prendre un couple de nombres entiers relatifs $(a, b) \in \mathbb{Z}^2$ et à les envoyer dans les nombres complexes par la transformation $(a,b) \mapsto a + bi$. Posons $\xi = a + bi$. La norme de $\xi$ est $\newcommand{\norm}[1]{\lVert #1 \rVert}
+Une méthode systématique pour trouver des solutions de notre équation diophantienne consiste à prendre un couple de nombres entiers relatifs premiers entre eux $(a, b) \in \mathbb{Z}^2$ et à les envoyer dans les nombres complexes par la transformation $(a,b) \mapsto a + bi$. Posons $\xi = a + bi$. La norme de $\xi$ est $\newcommand{\norm}[1]{\lVert #1 \rVert}
  \norm \xi = \sqrt{a^2 + b^2}$. En élevant $\xi$ au carré, on obtient l'assurance que la norme de $\xi^2$ est entière, égale à $a^2 + b^2$. Cela fonctionne car la norme dans les complexes est multiplicative, c'est à dire que pour deux nombres complexes $u$ et $v$, $\norm {uv} = \norm u \norm v$. Nous allons voir qu'il y a un lien avec les déterminants. 
 
 Voyons comment cela fonctionne. On peut représenter $i$ par la matrice 
@@ -49,7 +49,7 @@ z = & a^2 + b^2
 \end{align*}
 $$ 
 
-Nous n'avons pas complèment terminé car comment avoir l'assurance que nous pouvons trouver toutes les solutions avec cette méthode? Pour démontrer que c'est bien le cas, nous allons prendre ce point $\xi^2$ dans le plan complexe et le projeter sur le cercle unitaire en divisant ses coordonnées par sa norme. Ainsi, le point rationnel $\left( \frac{a^2-b^2}{a^2+b^2}, \frac{2ab}{a^2+b^2} \right)$ est sur le cercle unitaire car $\left( \frac{a^2-b^2}{a^2+b^2} \right)^2 + \left( \frac{2ab}{a^2+b^2} \right)^2 = 1$.
+Nous n'avons pas complèment terminé car comment avoir l'assurance que nous pouvons trouver toutes les solutions avec cette méthode? En fait, nous ne les trouvons pas toutes, mais tout triplet pythagoricien est un Pour démontrer que c'est bien le cas, nous allons prendre ce point $\xi^2$ dans le plan complexe et le projeter sur le cercle unitaire en divisant ses coordonnées par sa norme. Ainsi, le point rationnel $\left( \frac{a^2-b^2}{a^2+b^2}, \frac{2ab}{a^2+b^2} \right)$ est sur le cercle unitaire car $\left( \frac{a^2-b^2}{a^2+b^2} \right)^2 + \left( \frac{2ab}{a^2+b^2} \right)^2 = 1$.
 
 Maintenant considérons la droite qui le traverse et passe par l'origine du plan. La pente de cette droite est $\frac{2ab}{a^2-b^2}$. En multipliant le numérateur et le dénominateur par $\frac{1}{a^2}$, on obtient une autre représentation de ce nombre rationnel $\frac{2\frac{b}{a}}{1 - \left(\frac{b}{a}\right)^2}$. Ainsi la boucle est bouclée avec une bijection dans $\mathbb{Z}^2$, définie par l'application
 
@@ -75,7 +75,7 @@ Nous allons d'abord faire un petit rappel de la définition et des propriétés 
 
 Pour définir les nombres multicomplexes $\newcommand{MC}{\mathcal{M}\mathbb{C}} \MC_n$, nous allons déterminer un nombre imaginaire $e$ tel que $e^n = -1$. Un nombre multicomplexe $\xi \in \MC_n$ est défini comme une combinaison linéaire $\sum_{k=0}^{n-1}\xi_k e^k$, où les composantes $\xi_k$ sont des nombres réels.
 
-Analogue à la norme dans les complexes définie par la racine du déterminant de la représentation matricielle, on a aussi une pseudo-norme $\norm \xi$. Il ne s'agit pas d'une norme dans le sens usuelle car elle ne respecte pas l'inégalité du triangle et elle peut prendre une valeur nulle ou négative, mais elle préserve la propriété multiplicative $\norm {uv} = \norm u \norm v$. Pour un nombre $\xi = \sum_{k=0}^{n-1}{\xi_k e^k}$, elle est définie par la racine $n$-ième du déterminant de la matrice $n \times n$,  $X = \sum_{k=0}^{n-1}{\xi_k J^k}$, où $J$ est une matrice $n \times n$ telles que $J^n = -I$.
+Analogue à la norme dans les complexes définie par la racine du déterminant de la représentation matricielle, on a aussi une pseudo-norme $\norm \xi$. Il ne s'agit pas d'une norme dans le sens usuelle car elle ne respecte pas l'inégalité du triangle et elle peut prendre une valeur nulle ou négative, mais elle préserve la propriété multiplicative $\norm {uv} = \norm u \norm v$. Pour un nombre $\xi = \sum_{k=0}^{n-1}{\xi_k e^k}$, elle est définie par la racine $n$-ième du déterminant de la matrice $n \times n$,  $M(\xi) = \sum_{k=0}^{n-1}{\xi_k J^k}$, où $J$ est une matrice $n \times n$ telles que $J^n = -I$.
 
 $$
 J = \begin{pmatrix}
@@ -90,7 +90,7 @@ $$
 et
 
 $$
-X = \begin{pmatrix}
+M(\xi) = \begin{pmatrix}
  \xi_0 & -\xi_1 & -\xi_2 & \dots & -\xi_{n-1} \\
  \xi_{n-1} & \xi_0 & -\xi_1 & \dots & -\xi_{n-2} \\
  \vdots & \vdots & \vdots & \ddots & \vdots \\
@@ -99,13 +99,76 @@ X = \begin{pmatrix}
 \end{pmatrix}
 $$
 
-Les composantes de cette matrice sont $X_{i,j} = s(i - j) \xi_{j - i}$, où $s(x) = -1$, si $x < 0$, $1$ sinon. Par convention, lorsque $j < i$, $j - i = n + j - i$. En utilisant la [formule du déterminant d'une matrice carrée de Leibniz](https://fr.wikipedia.org/wiki/Formule_de_Leibniz)
+Les composantes de cette matrice sont $\DeclareMathOperator{sgn}{sgn_{+}} M(\xi)_{i,j} = \sgn(i - j) \xi_{j - i}$, où $\sgn(x) = -1$, si $x < 0$, $1$ sinon. Par convention, lorsque $j < i$, $j - i = n + j - i$. En utilisant la [formule du déterminant d'une matrice carrée de Leibniz](https://fr.wikipedia.org/wiki/Formule_de_Leibniz)
 
 $$
 \begin{align*}
-\norm \xi & = \sqrt[n]{\sum_{\sigma \in S_n}{ \epsilon(\sigma) \prod_{j = 1}^{n}{ s\left(j - \sigma(j) \right) \xi_{\sigma(j) - j}}}}
+\norm \xi^n & = \sum_{\sigma \in S_n}{ \epsilon(\sigma) \prod_{j = 0}^{n - 1}{ \sgn \left(j - \sigma(j) \right) \xi_{\sigma(j) - j}}}
 \end{align*}
 $$
+
+Notons que si les coefficients de $\xi$ sont dans $\mathbb{Z}$, alors $\norm \xi^n$ est aussi dans $\mathbb{Z}$.
+
+Pour notre prochaine proposition, nous allons introduire une nouvelle notation. On écrit $\mathcal{\Omega}(n)$ pour remplacer une somme de monômes à $n$ ou plus variables.
+
+Par exemple, on peut écrire $a^2b + b^2c + 4a^2ef + abcd = \mathcal{\Omega}(2)$, ou encore $12a^3 - abcd = \mathcal{\Omega}(1)$. Par contre $a^2 + b^2 + 2ab \ne \mathcal{\Omega}(2)$ parce que cette somme de monômes contient des termes à moins de 2 variables.
+
+On peut maintenant présenter notre propisition. Si $n$ est impair, alors 
+
+$$
+\norm \xi^n = \left(\sum_{j=0}^{n-1}{(-1)^j \xi_j^n}\right) + \mathcal{\Omega}(3)
+$$
+
+Puissance $n$ de $\xi$:
+
+$$
+\DeclareMathOperator{Part}{Part}
+\DeclareMathOperator{Perm}{Perm}
+\begin{align*}
+\xi^n & = \sum_{n = \sum_{j=0}^{n-1} p_j} {\binom{n}{p_0, \dots, p_{n-1}} \prod_{j=0}^{n-1} {(\xi_j e^j)^{p_j}}}  \\
+\xi^n & = \sum_{n = \sum_{j=0}^{n-1} p_j} {\binom{n}{p_0, \dots, p_{n-1}} \left(\prod_{j=0}^{n-1} {\xi_j^{p_j}}\right) \left(\prod_{j=0}^{n-1} {e^{j p_j}} \right)}  \\
+\xi^n & = \sum_{n = \sum_{j=0}^{n-1} p_j} {\binom{n}{p_0, \dots, p_{n-1}} \left(\prod_{j=0}^{n-1} {\xi_j^{p_j}}\right) e^{E(p)}}  \\
+\xi^n & = \sum_{n = \sum_{j=0}^{n-1} p_j} {\binom{n}{p_0, \dots, p_{n-1}} \left(\prod_{j=0}^{n-1} {\xi_j^{p_j}}\right) (-1)^{D(p)} e^{R(p)}}  \\
+\xi^n & = \sum_{n = \sum_{j=0}^{n-1} p_j} {(-1)^{D(p)} \binom{n}{p_0, \dots, p_{n-1}} \left(\prod_{j=0}^{n-1} {\xi_j^{p_j}}\right) e^{R(p)}}  \\
+\end{align*}
+$$
+
+où
+
+$$
+\begin{gather*}
+E(p) = \sum_{j = 0}^{n - 1}{j p_j} \\
+D(p) = \lfloor \frac{E(p)}{n} \rfloor \bmod 2\\
+R(p) = E(p) \bmod n\\
+\end{gather*}
+$$
+
+Composantes de $\xi^n$:
+
+$$
+(\xi^n)_i = 
+   \sum_{n = \sum_{j=0}^{n-1} {p_j}}^{E(p) \equiv i \pmod n} {
+		(-1)^{D(p)} \binom{n}{p_0, \dots, p_{n-1}} \prod_{j = 0}^{n-1}{\xi_{j}^{p_j}}
+  }
+$$
+
+$$
+(\xi^n)_i = \begin{cases} 
+	\left( \sum_{j=0}^{n-1} {(-1)^j \xi_j^n} \right) + \text{R.D.T.} & \text{si } i = 0, \\
+	\left( \sum_{j=0}^{n-1} {(-1)^{D(\overset{*}p(i,j))} \binom{n}{n-1} \xi_{j}^{n-1}\xi_{i + j}} \right) + \text{R.D.T.} & \text{sinon}.
+\end{cases}
+$$
+
+où
+
+$$
+\overset{*}p(i, j)_k = \begin{cases}
+n-1 & \text{si } k = j, \\
+1 & \text{si } k = i + j, \\
+0 & \text{sinon}.
+\end{cases}
+$$
+
 
 ## Les tuples hyper pythagoriciens
 
@@ -195,6 +258,50 @@ où, tous les $\beta_j$ sont entiers et $\tau$ est entier. Donc $(\beta_0, \beta
 
 De même que pour les triplets pythagoriciens, on se demande s'il existe d'autres quadruplets hyper pythagoriciens que l'on ne trouve pas par cette méthode et nous allons voir que la réponse est négative.
 
+Divisons par $\tau$ de chaque côté de l'équation:
+
+$$
+\left(\frac{\beta_0}{\tau}\right)^3 - \left(\frac{\beta_1}{\tau}\right)^3 + \left(\frac{\beta_2}{\tau}\right)^3 + 3\left(\frac{\beta_0}{\tau}\right)\left(\frac{\beta_1}{\tau}\right)\left(\frac{\beta_2}{\tau}\right) = 1 
+$$
+
+Ce qui donne pour les termes $\frac{\beta_i}{\tau}$:
+
+$$
+\begin{align*}
+\frac{\beta_0}{\tau} & = \frac{\xi_0^3 - \xi_1^3 + \xi_2^3
+  - 6 \xi_0 \xi_1 \xi_2}{\xi_0^3-\xi_1^3+\xi_2^3+3\xi_0\xi_1\xi_2} \\
+\frac{\beta_1}{\tau} & = \frac{3 \left( 
+      \xi_0^2\xi_1
+    - \xi_1^2 \xi_2
+    - \xi_0 \xi_2^2
+    \right)}{\xi_0^3-\xi_1^3+\xi_2^3+3\xi_0\xi_1\xi_2} \\
+\frac{\beta_2}{\tau} & = \frac{3 \left(
+      \xi_0^2\xi_2 
+    + \xi_0 \xi_1^2
+    - \xi_2^2 \xi_1
+    \right)}{\xi_0^3-\xi_1^3+\xi_2^3+3\xi_0\xi_1\xi_2} \\
+\end{align*}
+$$
+
+Qui est équivalent, en multipliant les numérateurs et dénominateurs par $\frac{1}{\xi_0^3}$:
+
+$$
+\begin{align*}
+\frac{\beta_0}{\tau} & = \frac{1 - \frac{\xi_1}{\xi_0}^3 + \frac{\xi_2}{\xi_0}^3
+  - 6 \frac{\xi_1}{\xi_0} \frac{\xi_2}{\xi_0}}{1-\frac{\xi_1}{\xi_0}^3+\frac{\xi_2}{\xi_0}^3+3\frac{\xi_1}{\xi_0}\frac{\xi_2}{\xi_0}} \\
+\frac{\beta_1}{\tau} & = \frac{3 \left( 
+      \frac{\xi_1}{\xi_0}
+    - \frac{\xi_1}{\xi_0}^2 \frac{\xi_2}{\xi_0}
+    - \frac{\xi_2}{\xi_0}^2
+    \right)}{1-\frac{\xi_1}{\xi_0}^3+\frac{\xi_2}{\xi_0}^3+3\frac{\xi_1}{\xi_0}\frac{\xi_2}{\xi_0}} \\
+\frac{\beta_2}{\tau} & = \frac{3 \left(
+      \frac{\xi_2}{\xi_0} 
+    + \frac{\xi_1}{\xi_0}^2
+    - \frac{\xi_2}{\xi_0}^2 \frac{\xi_1}{\xi_0}
+    \right)}{1-\frac{\xi_1}{\xi_0}^3+\frac{\xi_2}{\xi_0}^3+3\frac{\xi_1}{\xi_0}\frac{\xi_2}{\xi_0}} \\
+\end{align*}
+$$
+
 ## Cas général en vrac
 
 De manière analogue, la méthode précédente peut être appliquée pour trouver des $(n+1)$-uplets de nombres qui satisfont l'équation diophantienne $\norm{\xi}^n = \tau^n$, pour $\xi \in \MC_n$ à coefficients entiers et $\tau$ un entier positif. Nous allons maintenant démontrer que toutes les solutions diophantiennes de cette équation peuvent être trouvées de cette manière.
@@ -230,7 +337,7 @@ $$
 $$
 
 $$
-\mathbb Q ^{n-1} \xrightarrow{(\frac{\xi_1}{\x8_0}, \dots, \frac{\xi_{n-1}}{\xi_0}) \mapsto (\xi_0, \xi_1, \dots, \xi_{n-1})} \mathbb{Z}^n
+\mathbb Q ^{n-1} \xrightarrow{(\frac{\xi_1}{\xi_0}, \dots, \frac{\xi_{n-1}}{\xi_0}) \mapsto (\xi_0, \xi_1, \dots, \xi_{n-1})} \mathbb{Z}^n
 $$
 
 Ceci est en fait une bijection entre $\mathbb{Z}^n$ et les points rationnels de la surface unitaire de $\MC_n$. Il est impossible de satisfaire que deux termes $b_j$ et $b_k$ soient strictement positifs, et tous les autres termes égaux à $0$ (à démontrer). Ainsi, on exclu la possibilité de l'existence d'un nombre $\xi \in \MC_n$ où $\norm \xi ^n = y^n + z^n$ et cela conclu la preuve.
