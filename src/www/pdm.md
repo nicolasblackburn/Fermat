@@ -31,3 +31,14 @@ c & d & e & a & -b \\
 b & c & d & e & a \\
 \end{pmatrix}
 $$
+
+$$
+\begin{pmatrix}
+a & -b & -c & -d & -e & -f \\
+f & a & -b & -c & -d & -e \\
+e & f & a & -b & -c & -d \\
+d & e & f & a & -b & -c \\
+c & d & e & f & a & -b \\
+b & c & d & e & f & a \\
+\end{pmatrix}
+$$
