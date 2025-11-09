@@ -111,12 +111,15 @@ Notons que si les coefficients de $\xi$ sont dans $\mathbb{Z}$, alors $\norm \xi
 
 Pour notre prochaine proposition, nous allons introduire une nouvelle notation. On écrit $\mathcal{\Omega}(n)$ pour remplacer une somme de monômes à $n$ ou plus variables.
 
-Par exemple, on peut écrire $a^2b + b^2c + 4a^2ef + abcd = \mathcal{\Omega}(2)$, ou encore $12a^3 - abcd = \mathcal{\Omega}(1)$. Par contre $a^2 + b^2 + 2ab \ne \mathcal{\Omega}(2)$ parce que cette somme de monômes contient des termes à moins de 2 variables.
+Par exemple, on peut écrire $a^2b + b^2c + 4a^2ef + abcd = \mathcal{M}(2)$, ou encore $12a^3 - abcd = \mathcal{M}(1)$. Par contre $a^2 + b^2 + 2ab \ne \mathcal{M}(2)$ parce que cette somme de monômes contient des termes à moins de 2 variables.
 
-On peut maintenant présenter notre propisition. Si $n$ est impair, alors 
+On peut maintenant présenter notre proposition: 
 
 $$
-\norm \xi^n = \left(\sum_{j=0}^{n-1}{(-1)^j \xi_j^n}\right) + \mathcal{\Omega}(3)
+\norm \xi^n = \begin{cases}
+\left(\sum_{j=0}^{n-1}{(-1)^j \xi_j^n}\right) + \mathcal{M}(3) & \text{si } n \text{ impair,} \\
+\left(\sum_{j=0}^{n-1}{(-1)^j \xi_j^n}\right) + \mathcal{M}(2) & \text{si } n \text{ pair.}\\
+\end{cases}
 $$
 
 Puissance $n$ de $\xi$:
