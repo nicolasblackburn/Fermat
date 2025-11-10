@@ -176,7 +176,7 @@ La motivation derrière cette idée est que s'il existe une solution à l'équat
 
 ### Théorème
 
-S'il existe une solution $x$, $y$ et $z$ d'entiers solutions de $x^n + y^n = z^n$, alors alors elle sera aussi solution de $$\norm \xi^n = \tau^n$.
+S'il existe $x$, $y$ et $z$ entiers positifs solution de $x^n + y^n = z^n$, alors ils seront aussi solution de $$\norm \xi^n = \tau^n$.
 
 <details>
 <summary>Démonstration</summary>
