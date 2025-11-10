@@ -30,7 +30,7 @@ M(\xi) = \begin{pmatrix}
 \end{pmatrix}
 $$
 
-Les composantes de cette matrice sont $\DeclareMathOperator{sgnplus}{sgn_{+}} M(\xi)_{i,j} = \sgnplus(i - j) \xi_{j - i}$, où $\sgnplus(x) = -1$, si $x < 0$, $1$ sinon. Par convention, lorsque $j < i$, $j - i = n + j - i$. 
+Les composantes de cette matrice sont $\DeclareMathOperator{sgnplus}{sgn_{+}} (M(\xi))_{i,j} = \sgnplus(i - j) \xi_{j - i}$, où $\sgnplus(x) = -1$, si $x < 0$, $1$ sinon. Par convention, lorsque $j < i$, $j - i = n + j - i$. 
 
 En utilisant la [formule du déterminant d'une matrice carrée de Leibniz](https://fr.wikipedia.org/wiki/Formule_de_Leibniz):
 
@@ -40,38 +40,66 @@ $$
 
 Notons que si les coefficients de $\xi$ sont dans $\mathbb{Z}$, alors $\norm \xi^n$ est aussi dans $\mathbb{Z}$.
 
-Pour notre prochaine proposition, nous allons introduire une nouvelle notation. On écrit $\mathcal{M}(n)$ pour remplacer un polynôme dont tous les monômes sont composés d'au moins $n$ variables. On appelle ça la multiplicité inférieure d'un polynôme.
+---
 
-Par exemple, on peut écrire $3a^2b + 3b^2c -6abc = \mathcal{M}(2)$, ou encore $a^4 + c^4 - 4b^2d^2 + abcd = \mathcal{M}(1)$. Par contre $a^2 + b^2 + 2ab \ne \mathcal{M}(2)$ parce que cette somme de monômes contient des termes à moins de 2 variables.
+### Proposition
 
-Proposition sur la multiplicité inférieure du déterminant: 
+Si $\xi_0$ et $\xi_1$ sont distincts et différents de zéro et $\xi_i = 0$ pour tout $i$ plus grand que 1, alors: 
 
 $$
 \DeclareMathOperator{sgnstar}{sgn^*}
-\norm \xi = \sqrt[n]{\sum_{j=0}^{n-1}{\sgnstar(j) \xi_j^n} + \begin{cases}
-\mathcal{M}(2) & \text{si } n \text{ pair,}\\
-\mathcal{M}(3) & \text{si } n \text{ impair.} \\
-\end{cases}}
+\norm \xi = \sqrt[n]{\xi_0^n + \xi_1^n}
 $$
 
-où
+<details>
+<summary>Démonstration</summary>
+
+On procède au calcul du déterminant en appliquant la formule de récurrence par cofacteurs par rapport à la première colonne:
 
 $$
-\sgnstar(j) = (\sgnplus(-j))^{n-j}(-1)^{j(n-j)}
+\det {M(\xi)} = \sum_{i = 0}^{n-1}{(-1)^i(M(\xi))_{i,0}\det{M(\xi)_{i,0}}}
 $$
 
-Puissance $n$ de $\xi$:
+On note que seul les éléments de la première et de la dernière rangées sont non-nuls, et en appliquant la formule des composantes on obtient
+
+$$
+\begin{align*}
+\det {M(\xi)} = \xi_{0}\det{M(\xi)_{0,0}} + (-1)^{n-1}\xi_1\det{M(\xi)_{n-1,0}}
+\end{align*}
+$$
+
+La comatrice $M(\xi)_{0,0}$ est une matrice triangulaire suppérieure dont la diagonale ne contient que des composantes $\xi_0$ et la comatrice $M(\xi)_{n-1,0}$ est une matrice diagonale inférieure dont la diagonale ne contient que des composantes $-\xi_1$. Ainsi on obtient
+
+$$
+\begin{align*}
+\det {M(\xi)} = \xi_{0}\xi_0^{n-1} + (-1)^{n-1}\xi_1(-\xi_1)^{n-1}
+\end{align*}
+$$
+
+On réorganise les termes semblables et on obtient
+
+$$
+\begin{align*}
+\det {M(\xi)} & = \xi_{0}^n + (-1)^{2(n-1)}\xi_1^n \\
+\det {M(\xi)} & = \xi_{0}^n + \xi_1^n \\
+\norm \xi &= \sqrt[n]{\xi_{0}^n + \xi_1^n}
+\end{align*}
+$$
+
+□
+
+</details>
+
+---
+
+### Proposition
+
+La somme d'une puissance $n$ de $\xi$ est donnée par la formule
 
 $$
 \DeclareMathOperator{Part}{Part}
 \DeclareMathOperator{Perm}{Perm}
-\begin{align*}
-\xi^n & = \sum_{\substack{p_j \in \mathbb{N}, \\ n = \sum_{j=0}^{n-1} {p_j}}} {\binom{n}{p_0, \dots, p_{n-1}} \prod_{j=0}^{n-1} {(\xi_j e^j)^{p_j}}}  \\
-\xi^n & = \sum_{\substack{p_j \in \mathbb{N}, \\ n = \sum_{j=0}^{n-1} {p_j}}} {\binom{n}{p_0, \dots, p_{n-1}} \left(\prod_{j=0}^{n-1} {\xi_j^{p_j}}\right) \left(\prod_{j=0}^{n-1} {e^{j p_j}} \right)}  \\
-\xi^n & = \sum_{\substack{p_j \in \mathbb{N}, \\ n = \sum_{j=0}^{n-1} {p_j}}} {\binom{n}{p_0, \dots, p_{n-1}} \left(\prod_{j=0}^{n-1} {\xi_j^{p_j}}\right) e^{E(p)}}  \\
-\xi^n & = \sum_{\substack{p_j \in \mathbb{N}, \\ n = \sum_{j=0}^{n-1} {p_j}}} {\binom{n}{p_0, \dots, p_{n-1}} \left(\prod_{j=0}^{n-1} {\xi_j^{p_j}}\right) (-1)^{D(p)} e^{R(p)}}  \\
-\xi^n & = \sum_{\substack{p_j \in \mathbb{N}, \\ n = \sum_{j=0}^{n-1} {p_j}}} {(-1)^{D(p)} \binom{n}{p_0, \dots, p_{n-1}} \left(\prod_{j=0}^{n-1} {\xi_j^{p_j}}\right) e^{R(p)}}  \\
-\end{align*}
+\xi^n = \sum_{\substack{p_j \in \mathbb{N}, \\ n = \sum_{j=0}^{n-1} {p_j}}} {(-1)^{D(p)} \binom{n}{p_0, \dots, p_{n-1}} \left(\prod_{j=0}^{n-1} {\xi_j^{p_j}}\right) e^{R(p)}}
 $$
 
 où
@@ -84,7 +112,27 @@ R(p) = E(p) \bmod n\\
 \end{gather*}
 $$
 
-Composantes de $\xi^n$:
+<details>
+<summary>Démonstration</summary>
+
+On applique le théorème du multinôme de Newton:
+
+$$
+\begin{align*}
+\xi^n & = \sum_{\substack{p_j \in \mathbb{N}, \\ n = \sum_{j=0}^{n-1} {p_j}}} {\binom{n}{p_0, \dots, p_{n-1}} \prod_{j=0}^{n-1} {(\xi_j e^j)^{p_j}}}  \\
+\xi^n & = \sum_{\substack{p_j \in \mathbb{N}, \\ n = \sum_{j=0}^{n-1} {p_j}}} {\binom{n}{p_0, \dots, p_{n-1}} \left(\prod_{j=0}^{n-1} {\xi_j^{p_j}}\right) \left(\prod_{j=0}^{n-1} {e^{j p_j}} \right)}  \\
+\xi^n & = \sum_{\substack{p_j \in \mathbb{N}, \\ n = \sum_{j=0}^{n-1} {p_j}}} {\binom{n}{p_0, \dots, p_{n-1}} \left(\prod_{j=0}^{n-1} {\xi_j^{p_j}}\right) e^{E(p)}}  \\
+\xi^n & = \sum_{\substack{p_j \in \mathbb{N}, \\ n = \sum_{j=0}^{n-1} {p_j}}} {\binom{n}{p_0, \dots, p_{n-1}} \left(\prod_{j=0}^{n-1} {\xi_j^{p_j}}\right) (-1)^{D(p)} e^{R(p)}}  \\
+\xi^n & = \sum_{\substack{p_j \in \mathbb{N}, \\ n = \sum_{j=0}^{n-1} {p_j}}} {(-1)^{D(p)} \binom{n}{p_0, \dots, p_{n-1}} \left(\prod_{j=0}^{n-1} {\xi_j^{p_j}}\right) e^{R(p)}}  \\
+\end{align*}
+$$
+</details>
+
+---
+
+### Corrolaire
+
+Formule pour les composantes de $\xi^n$
 
 $$
 (\xi^n)_i = 
@@ -92,6 +140,12 @@ $$
 		(-1)^{D(p)} \binom{n}{p_0, \dots, p_{n-1}} \prod_{j = 0}^{n-1}{\xi_{j}^{p_j}}
   }
 $$
+
+---
+
+### Corrolaire
+
+Cette formule met en évidence les termes à 1 et 2 variables des composantes de $\xi^n$
 
 $$
 (\xi^n)_i = \begin{cases} 
@@ -110,6 +164,7 @@ n-1 & \text{si } k = j, \\
 \end{cases}
 $$
 
+---
 
 ## Les tuples hyper pythagoriciens
 
@@ -121,6 +176,14 @@ Nous allons commencer par montrer le cas particulier $n = 3$ pour nous réchauff
 
 Développons $\xi^3$ en utilisant la [formule du multinôme de Newton](https://fr.wikipedia.org/wiki/Formule_du_multin%C3%B4me_de_Newton):
 
+$$
+\xi^3 = (\xi_0 + \xi_1 e + \xi_2 e^2)^3 
+$$
+
+---
+
+<details>
+<summary>Calculs</summary>
 $$
 \begin{align*}
 \xi^3 & = (\xi_0 + \xi_1 e + \xi_2 e^2)^3 \\
@@ -165,6 +228,9 @@ $$
     \right) e^2
 \end{align*}
 $$
+</details>
+
+---
 
 Posons
 
