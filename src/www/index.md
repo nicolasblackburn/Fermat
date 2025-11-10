@@ -324,6 +324,41 @@ $$
 \end{align*}
 $$
 
+Et finalement substituons $t_i = \frac{\xi_i}{\xi_0}$ pout $i$ plus grand que 0 et $x_i = \frac{\beta_i}{\tau}$:
+
+$$
+\begin{align*}
+x_0 & = \frac{1 - t_1^3 + t_2^3
+  - 6 t_1 t_2}{1-t_1^3+t_2^3+3t_1t_2} \\
+x_1 & = \frac{3 \left( 
+      t_1
+    - t_1^2 t_2
+    - t_2^2
+    \right)}{1-t_1^3+t_2^3+3t_1t_2} \\
+x_2 & = \frac{3 \left(
+      t_2
+    + t_1^2
+    - t_2^2 t_1
+    \right)}{1-t_1^3+t_2^3+3t_1t_2} \\
+\end{align*}
+$$
+
+Dans l'autre sens à partir du point rationnel $x = (1,0,0)$.
+
+$$
+\begin{cases}
+x_1 = t_1(x_0 - 1) \\
+x_2 = t_2(x_0 - 1) \\
+x_0^3 + x_1^3 - x_2^n - 3x_0x_1x_2 = 1 \\
+\end{cases}
+$$
+
+$$
+\begin{align*}
+x_0^3 + (t_1^3-t_2^3)(x_0 - 1)^3 - 3t_1t_2x_0(x_0-1)^2 = 1 \\
+\end{align*}
+$$
+
 ## Cas général en vrac
 
 De manière analogue, la méthode précédente peut être appliquée pour trouver des $(n+1)$-uplets de nombres qui satisfont l'équation diophantienne $\norm{\xi}^n = \tau^n$, pour $\xi \in \MC_n$ à coefficients entiers et $\tau$ un entier positif. Nous allons maintenant démontrer que toutes les solutions diophantiennes de cette équation peuvent être trouvées de cette manière.
@@ -358,8 +393,19 @@ $$
 \mapsto (\frac{\xi_1}{\xi_0}, \dots, \frac{\xi_{n-1}}{\xi_0})} \mathbb Q^{n-1}
 $$
 
+On pose $t_j = \frac{\xi_j}{\xi_0}$ pour $j > 0$ et ça nous donne une paramétrisation des points rationnels.
+
+Maintenant on doit montrer dans l'autre sens en partant du point rationnel $(1, 0, \dots, 0)$ dans $\mathbb{Q}^{n-1}$ et en projetant les droites de pente $t_1$, $t_2$, $\dots$, $t_{n-1}$ sur un point quelconque de l'hypersurface définie par $\{\xi \in \MC_n \colon \norm \xi^n = 1\}$.
+
+Soit $P(x) = x_0^n + x_1^n + (-1)^{a_2}x_2^n + \dots + (-1)^{a_{n-1}}x_{n-1}^n + Q(x)$ le polynôme associé à $\norm \xi^n$, On doit résoudre le système suivant:
+
 $$
-\mathbb Q ^{n-1} \xrightarrow{(\frac{\xi_1}{\xi_0}, \dots, \frac{\xi_{n-1}}{\xi_0}) \mapsto (\xi_0, \xi_1, \dots, \xi_{n-1})} \mathbb{Z}^n
+\begin{cases}
+x_1 = t_1(x_0 - 1) \\
+\dots \\
+x_{n-1} = t_{n-1}(x_0 - 1) \\
+x_0^n + x_1^n + (-1)^{a_2}x_2^n + \dots + (-1)^{a_{n-1}}x_{n-1}^n + Q(x) = 1 \\
+\end{cases}
 $$
 
-Ceci est en fait une bijection entre $\mathbb{Z}^n$ et les points rationnels de la surface unitaire de $\MC_n$. Il est impossible de satisfaire que deux termes $b_j$ et $b_k$ soient strictement positifs, et tous les autres termes égaux à $0$ (à démontrer). Ainsi, on exclu la possibilité de l'existence d'un nombre $\xi \in \MC_n$ où $\norm \xi ^n = y^n + z^n$ et cela conclu la preuve.
+On voit que $x_0 = 1$ est une solution de $P(x)=1$ donc $x_0-1$ divise $P(x)$. Pour les termes dans $Q(x)$ ça n'est pas évident, mais le théorème du multinôme de Newton nous indique que tous les termes dans $Q(x)$ on au moins un facteur $x_j = t_j(x_0-1)$. Pour la suite, je ne sais pas trop comment nous allons procéder pour l'instant, mais je pense que nous devrons procéder par induction.
