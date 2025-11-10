@@ -273,3 +273,26 @@ function mcn(
     }
   }
 }
+
+function coltz(n) {
+  const m = 6*n+2;
+  let s = "\\begin{pmatrix}";
+  for (let i=1; i<=m; i++) {
+    let row = "";
+    let k = ((i-1)%m)+1;
+    for (let j=1; j<=m; j++) {
+      row += (row ? " & " : "");
+      if (k === j) {
+        row += "-\\lambda";
+      } else if (j/2 === k || (3*j+1)/2 === k) {
+        row += "1";
+      } else {
+        row += "0";
+      }
+    }
+    s += row + "\\\\";
+  }
+  s += "\\end{pmatrix}";
+  console.log(s);
+}
+coltz(1)
