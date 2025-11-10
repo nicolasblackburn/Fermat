@@ -4,7 +4,7 @@
 
 Nous allons d'abord faire un petit rappel de la définition et des propriétés des nombres multicomplexes. Pour plus d'information nous invitons le lecteur à se référer à [l'article original de Norbert Fleury](http://www.sciencedirect.com/science/article/pii/S0022247X83714101/pdf?md5=99c473b97d70da5a165a55850a33d7ea&pid=1-s2.0-S0022247X83714101-main.pdf).
 
-Pour définir les nombres multicomplexes $\newcommand{MC}{\mathcal{M}\mathbb{C}}\newcommand{\norm}[1]{\lVert #1 \rVert} \MC_n$, nous allons déterminer un nombre imaginaire $e$ tel que $e^n = -1$. Un nombre multicomplexe $\xi \in \MC_n$ est défini comme une combinaison linéaire $\sum_{k=0}^{n-1}\xi_k e^k$, où les composantes $\xi_k$ sont des nombres réels.
+Pour définir les nombres multicomplexes $\newcommand{MC}{\mathcal{M}\mathbb{C}}\newcommand{\norm}[1]{\lVert #1 \rVert} \MC_n$, nous allons déterminer un nombre imaginaire $e$ tel que $e^n = -1$. Un nombre multicomplexe $\xi \in \MC_n$ est défini comme une combinaison linéaire $\sum_{k=0}^{n-1}\xi_k e^k$, où les coefficients $\xi_k$ sont des nombres réels.
 
 Analogue à la norme dans les complexes définie par la racine du déterminant de la représentation matricielle, on a aussi une pseudo-norme $\norm \xi$. Lorsque $n$ est plus grand que 2 il ne s'agit pas d'une norme dans le sens usuelle car elle ne respecte pas l'inégalité du triangle et elle peut prendre une valeur nulle ou négative, mais elle préserve la propriété multiplicative $\norm {uv} = \norm u \norm v$. Pour un nombre $\xi = \sum_{k=0}^{n-1}{\xi_k e^k}$, elle est définie par la racine $n$-ième du déterminant de la matrice $n \times n$,  $M(\xi) = \sum_{k=0}^{n-1}{\xi_k J^k}$, où $J$ est une matrice $n \times n$ telles que $J^n = -I$.
 
@@ -170,7 +170,22 @@ $$
 
 On peut généraliser la méthode au début de cet article pour trouver les triplets pythagoriciens dans un espace euclidien à une méthode pour trouver les $(n+1)$-uplets de nombres entiers solutions de l'équation diophantienne $\norm \xi^n = \tau^n$, où $\xi$ est un élément de $\MC_n$ à coefficients entiers et $\tau$ est un entier positif. Nous allons appeler ces tuples hyper pythagoriciens, pour les distinguer des tuples dans l'espace euclidien $\mathbb{R}^n$ qui seraient par exemple solution de l'équation diophantienne $x_0^2 + x_1^2 + \dots + x_{n-1}^2 = y^2$.
 
-La motivation derrière cette idée est que s'il existe une solution à l'équation $x^n + y^n = z^n$, alors elle sera aussi solution de $\norm \xi^n = \tau^n$ (donner la démonstration). Si on démontre qu'il n'y a aucune telle solution pour $\norm \xi^n = \tau^n$, alors nous prouvons le théorème de Fermat-Wiles.
+La motivation derrière cette idée est que s'il existe une solution à l'équation $x^n + y^n = z^n$, alors elle sera aussi solution de $\norm \xi^n = \tau^n$.
+
+---
+
+### Théorème
+
+S'il existe $x$, $y$ et $z$ entiers positifs solution de $x^n + y^n = z^n$, alors ils seront aussi solution de $$\norm \xi^n = \tau^n$.
+
+<details>
+<summary>Démonstration</summary>
+□
+</details>
+
+---
+
+Si on démontre qu'il n'y a aucune telle solution pour $\norm \xi^n = \tau^n$, alors nous prouvons le théorème de Fermat-Wiles.
 
 Nous allons commencer par montrer le cas particulier $n = 3$ pour nous réchauffer. On cherche à démontrer qu'il n'y a pas de triplet entier $(x, y, z)$ tels que $x^3 + y^3 = z^3$. Pour ce faire nous allons nous servir des nombres multicomplexes d'ordre 3, $\MC_3$. Prennons un élément $\xi \in \MC_3$, où $\xi = \xi_0 + \xi_1 e + \xi_2 e^2$ et tous les $\xi_j \in \mathbb{Z}$. La norme de $\xi$ est $\norm \xi = \sqrt[3]{\xi_0^3 - \xi_1^3 + \xi_2^3 + 3\xi_0\xi_1\xi_2}$. Puisque la norme est multiplicative nous avons que la norme de $\xi^3$ est $\norm{\xi^3} = \xi_0^3 - \xi_1^3 + \xi_2^3 + 3\xi_0\xi_1\xi_2$. 
 
