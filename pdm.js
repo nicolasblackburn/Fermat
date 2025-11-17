@@ -188,6 +188,7 @@ function mhndet(n, z) {
 	const perms = sgnchoosek([...z.keys()], n);
 	for (const [sgn, perm] of perms) {
 		let u = sgn;
+		console.log(sgn, perm);
 		for (let i = 0; i < n; i++) {
 			u *= z[(n + perm[i] - i) % n];
 		}

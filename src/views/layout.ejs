@@ -8,7 +8,11 @@
 window.MathJax = {
   tex: {
     inlineMath: [['$', '$'], ['\\(', '\\)']],
-    displayMath: [['$$','$$'], ['\\[','\\]']]
+    displayMath: [['$$','$$'], ['\\[','\\]']],
+		scale: 1,
+    minScale: 0.5,    // permet à MathJax de réduire la taille si trop large
+    mtextInheritFont: true
+
   },
   svg: { fontCache: 'global' }
 };
@@ -33,6 +37,7 @@ thead th {
   width: 100vw;
   overflow: auto;
 }
+
 </style>
 </head>
 <body>
