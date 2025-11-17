@@ -400,7 +400,13 @@ r_2 & = \frac{3\left(t_2+t_1^2-t_1t_2^2\right)}{-9t_1t_2} \\
 \end{align*}
 $$
 
-Ça n'égale pas du tout $t_1$. Est-ce qu'il y a une erreur, ou l'hypersurface n'est pas birationnelle?
+On factorise l'expression quadratique en $t_1$.
+
+$$
+\begin{align*}
+0 & = (t_1 - \frac{3t_2r_1+1+\sqrt{(3t_2r_1+1)^2-4t_2t_2^2}}{2t_2})(t_1 - \frac{3t_2r_1+1+\sqrt{(3t_2r_1+1)^2-4t_2t_2^2}}{2t_2}) \\
+\end{align*}
+$$
 
 
 $$
