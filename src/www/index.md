@@ -1,4 +1,6 @@
-# Étude sur le dernier théorème de Fermat
+# Application des nombres multicompexes au théorème de Fermat-Wiles
+
+_Par Nicolas Blackburn_
 
 ## Les nombres multicomplexes
 
@@ -10,11 +12,11 @@ Analogue à la norme dans les complexes définie par la racine du déterminant d
 
 $$
 J = \begin{pmatrix}
-     0 &     -1 &      0 &  \dots &      0 \\
-     0 &      0 &     -1 &  \dots &      0 \\
+     0 &     1 &      0 &  \dots &      0 \\
+     0 &      0 &     1 &  \dots &      0 \\
 \vdots & \vdots & \vdots & \ddots & \vdots \\
-     0 &      0 &      0 &  \dots &     -1 \\
-     1 &      0 &      0 &  \dots &      0
+     0 &      0 &      0 &  \dots &     1 \\
+    -1 &      0 &      0 &  \dots &      0
 \end{pmatrix}
 $$
 
@@ -22,20 +24,20 @@ et
 
 $$
 M(\xi) = \begin{pmatrix}
- \xi_0 & -\xi_1 & -\xi_2 & \dots & -\xi_{n-1} \\
- \xi_{n-1} & \xi_0 & -\xi_1 & \dots & -\xi_{n-2} \\
- \vdots & \vdots & \vdots & \ddots & \vdots \\
- \xi_2 & \xi_3 & \xi_4 & \dots & -\xi_1 \\
- \xi_1 & \xi_2 & \xi_3 & \dots & \xi_0
+ \xi_0 & \xi_1 & \dots &  \xi_{n-2} & \xi_{n-1} \\
+-\xi_{n-1} & \xi_0 & \dots &  \xi_{n-3} & \xi_{n-2} \\
+-\xi_{n-2} & -\xi_{n-1} & \dots & \xi_{n-4} & \xi_{n-3} \\
+ \vdots & \vdots & \ddots & \vdots & \vdots \\
+-\xi_1 & -\xi_2 & \dots & -\xi_{n-1} & \xi_0
 \end{pmatrix}
 $$
 
-Les composantes de cette matrice sont $\DeclareMathOperator{sgnplus}{sgn_{+}} (M(\xi))_{i,j} = \sgnplus(i - j) \xi_{j - i}$, où $\sgnplus(x) = -1$, si $x < 0$, $1$ sinon. Par convention, lorsque $j < i$, $j - i = n + j - i$. 
+Les composantes de cette matrice sont $\DeclareMathOperator{sgnplus}{sgn_{+}} (M(\xi))_{i,j} = \sgnplus(j-i) \xi_{j - i}$, où $\sgnplus(x) = -1$, si $x < 0$, $1$ sinon. Par convention, lorsque $j < i$, $j - i = n + j - i$. 
 
 En utilisant la [formule du déterminant d'une matrice carrée de Leibniz](https://fr.wikipedia.org/wiki/Formule_de_Leibniz):
 
 $$
-\norm \xi = \sqrt[n]{\sum_{\sigma \in S_n}{ \epsilon(\sigma) \prod_{j = 0}^{n - 1}{ \sgnplus \left(j - \sigma(j) \right) \xi_{\sigma(j) - j}}}}
+\norm \xi = \sqrt[n]{\sum_{\sigma \in S_n}{ \epsilon(\sigma) \prod_{j = 0}^{n - 1}{ \sgnplus \left(\sigma(j)-j\right) \xi_{\sigma(j) - j}}}}
 $$
 
 Notons que si les coefficients de $\xi$ sont dans $\mathbb{Z}$, alors $\norm \xi^n$ est aussi dans $\mathbb{Z}$.
@@ -44,35 +46,35 @@ Notons que si les coefficients de $\xi$ sont dans $\mathbb{Z}$, alors $\norm \xi
 
 ### Proposition
 
-Si $\xi_0$ et $\xi_1$ sont distincts et différents de zéro et $\xi_i = 0$ pour tout $i$ plus grand que 1, alors: 
+Si $\xi_0$ et $\xi_{n-1}$ sont différents de zéro et $\xi_i = 0$ pour tout $i$ plus grand que 0 et plus petit que $n-1$, alors: 
 
 $$
 \DeclareMathOperator{sgnstar}{sgn^*}
-\norm \xi = \sqrt[n]{\xi_0^n + \xi_1^n}
+\norm \xi = \sqrt[n]{\xi_0^n + \xi_{n-1}^n}
 $$
 
 <details>
 <summary>Démonstration</summary>
 
-On procède au calcul du déterminant en appliquant la formule de récurrence par cofacteurs par rapport à la première colonne:
+On procède au calcul du déterminant en appliquant la formule de récurrence par cofacteurs par rapport à la première rangée:
 
 $$
-\det {M(\xi)} = \sum_{i = 0}^{n-1}{(-1)^i(M(\xi))_{i,0}\det{M(\xi)_{i,0}}}
+\det {M(\xi)} = \sum_{i = 0}^{n-1}{(-1)^i(M(\xi))_{0,i}\det{M(\xi)_{0,i}}}
 $$
 
-On note que seul les éléments de la première et de la dernière rangées sont non-nuls, et en appliquant la formule des composantes on obtient
+On note que seul les éléments de la première et de la dernière colonnes sont non-nuls, et en appliquant la formule des composantes on obtient
 
 $$
 \begin{align*}
-\det {M(\xi)} = \xi_{0}\det{M(\xi)_{0,0}} + (-1)^{n-1}\xi_1\det{M(\xi)_{n-1,0}}
+\det {M(\xi)} = \xi_{0}\det{M(\xi)_{0,0}} + (-1)^{n-1}\xi_{n-1}\det{M(\xi)_{0,n-1}}
 \end{align*}
 $$
 
-La comatrice $M(\xi)_{0,0}$ est une matrice triangulaire suppérieure dont la diagonale ne contient que des composantes $\xi_0$ et la comatrice $M(\xi)_{n-1,0}$ est une matrice diagonale inférieure dont la diagonale ne contient que des composantes $-\xi_1$. Ainsi on obtient
+La comatrice $M(\xi)_{0,0}$ est une matrice triangulaire inférieure dont la diagonale ne contient que des composantes $\xi_0$ et la comatrice $M(\xi)_{0,n-1}$ est une matrice diagonale supérieure dont la diagonale ne contient que des composantes $-\xi_{n-1}$. Ainsi on obtient
 
 $$
 \begin{align*}
-\det {M(\xi)} = \xi_{0}\xi_0^{n-1} + (-1)^{n-1}\xi_1(-\xi_1)^{n-1}
+\det {M(\xi)} = \xi_{0}\xi_0^{n-1} + (-1)^{n-1}\xi_{n-1}(-\xi_{n-1})^{n-1}
 \end{align*}
 $$
 
@@ -80,9 +82,17 @@ On réorganise les termes semblables et on obtient
 
 $$
 \begin{align*}
-\det {M(\xi)} & = \xi_{0}^n + (-1)^{2(n-1)}\xi_1^n \\
-\det {M(\xi)} & = \xi_{0}^n + \xi_1^n \\
-\norm \xi &= \sqrt[n]{\xi_{0}^n + \xi_1^n}
+\det {M(\xi)} & = \xi_{0}^n + (-1)^{2(n-1)}\xi_{n-1}^n \\
+\det {M(\xi)} & = \xi_{0}^n + \xi_{n-1}^n \\
+\end{align*}
+$$
+
+Et en appliquant la définition de la pseudo-norme
+
+$$
+\begin{align*}
+\norm \xi &= \sqrt[n]{\det{M(\xi)}} \\
+\norm \xi &= \sqrt[n]{\xi_{0}^n + \xi_{n-1}^n}
 \end{align*}
 $$
 
@@ -94,7 +104,7 @@ $$
 
 ### Proposition
 
-La somme d'une puissance $n$ de $\xi$ est donnée par la formule
+Une puissance $n$ de $\xi$ est donnée par la formule
 
 $$
 \DeclareMathOperator{Part}{Part}
@@ -192,7 +202,20 @@ Nous allons commencer par montrer le cas particulier $n = 3$ pour nous réchauff
 Développons $\xi^3$ en utilisant la [formule du multinôme de Newton](https://fr.wikipedia.org/wiki/Formule_du_multin%C3%B4me_de_Newton):
 
 $$
-\xi^3 = (\xi_0 + \xi_1 e + \xi_2 e^2)^3 
+\begin{align*}
+\xi^3 = \xi_0^3 - \xi_1^3 + \xi_2^3
+  - 6 \xi_0 \xi_1 \xi_2
+  + 3 \left( 
+      \xi_0^2\xi_1
+    - \xi_1^2 \xi_2
+    - \xi_0 \xi_2^2
+    \right) e
+  + 3 \left(
+      \xi_0^2\xi_2 
+    + \xi_0 \xi_1^2
+    - \xi_1 \xi_2^2
+    \right) e^2
+\end{align*}
 $$
 
 ---
@@ -261,7 +284,7 @@ $$
 \beta_2 & = 3 \left(
       \xi_0^2\xi_2 
     + \xi_0 \xi_1^2
-    - \xi_2^2 \xi_1
+    - \xi_1 \xi_2^2
     \right)\\
 \end{align*}
 $$
@@ -300,7 +323,7 @@ $$
 \frac{\beta_2}{\tau} & = \frac{3 \left(
       \xi_0^2\xi_2 
     + \xi_0 \xi_1^2
-    - \xi_2^2 \xi_1
+    - \xi_1 \xi_2^2
     \right)}{\xi_0^3-\xi_1^3+\xi_2^3+3\xi_0\xi_1\xi_2} \\
 \end{align*}
 $$
@@ -319,7 +342,7 @@ $$
 \frac{\beta_2}{\tau} & = \frac{3 \left(
       \frac{\xi_2}{\xi_0} 
     + \frac{\xi_1}{\xi_0}^2
-    - \frac{\xi_2}{\xi_0}^2 \frac{\xi_1}{\xi_0}
+    - \frac{\xi_1}{\xi_0} \frac{\xi_2}{\xi_0}^2
     \right)}{1-\frac{\xi_1}{\xi_0}^3+\frac{\xi_2}{\xi_0}^3+3\frac{\xi_1}{\xi_0}\frac{\xi_2}{\xi_0}} \\
 \end{align*}
 $$
@@ -328,34 +351,76 @@ Et finalement substituons $t_i = \frac{\xi_i}{\xi_0}$ pout $i$ plus grand que 0 
 
 $$
 \begin{align*}
-x_0 & = \frac{1 - t_1^3 + t_2^3
-  - 6 t_1 t_2}{1-t_1^3+t_2^3+3t_1t_2} \\
-x_1 & = \frac{3 \left( 
-      t_1
-    - t_1^2 t_2
-    - t_2^2
-    \right)}{1-t_1^3+t_2^3+3t_1t_2} \\
-x_2 & = \frac{3 \left(
-      t_2
-    + t_1^2
-    - t_2^2 t_1
-    \right)}{1-t_1^3+t_2^3+3t_1t_2} \\
+x_0 & = \frac{1-t_1^3+t_2^3-6t_1t_2}{1-t_1^3+t_2^3+3t_1t_2} \\
+x_1 & = \frac{3\left(t_1-t_1^2t_2-t_2^2\right)}{1-t_1^3+t_2^3+3t_1t_2} \\
+x_2 & = \frac{3\left(t_2+t_1^2-t_1t_2^2\right)}{1-t_1^3+t_2^3+3t_1t_2} \\
 \end{align*}
 $$
 
-Dans l'autre sens à partir du point rationnel $x = (1,0,0)$.
+Dans l'autre sens à partir du point rationnel $x = (1,0,0)$ on peut projeter une droite qui intersectionne l'hypersurface en un point rationnel.
 
 $$
 \begin{cases}
-x_1 = t_1(x_0 - 1) \\
-x_2 = t_2(x_0 - 1) \\
-x_0^3 + x_1^3 - x_2^n - 3x_0x_1x_2 = 1 \\
+x_1 = r_1(x_0 - 1) \\
+x_2 = r_2(x_0 - 1) \\
+\end{cases}
+$$
+
+Donc
+
+$$
+\begin{cases}
+r_1 = \frac{x_1}{x_0-1} \\
+r_2 = \frac{x_2}{x_0-1} \\
+\end{cases}
+$$
+
+On fait la vérification
+
+$$
+\begin{align*}
+x_0-1 & = \frac{1-t_1^3+t_2^3-6t_1t_2}{1-t_1^3+t_2^3+3t_1t_2}-1 \\
+& = \frac{1-t_1^3+t_2^3-6t_1t_2-1+t_1^3-t_2^3-3t_1t_2}{1-t_1^3+t_2^3+3t_1t_2} \\
+& = \frac{-9t_1t_2}{1-t_1^3+t_2^3+3t_1t_2} \\
+\end{align*}
+$$
+
+Maintenant on divise $x_1$ par $x_0-1$
+
+$$
+\begin{align*}
+\frac{x_1}{x_0-1} & = \frac{3\left(t_1-t_1^2t_2-t_2^2\right)}{-9t_1t_2} \\
+r_1 & = \frac{3\left(t_1-t_1^2t_2-t_2^2\right)}{-9t_1t_2} \\
+r_1 & = \frac{3\left(-t_1+t_1^2t_2+t_2^2\right)}{9t_1t_2} \\
+r_1 & = \frac{3(-t_1)}{9t_1t_2} + \frac{3t_1^2t_2}{9t_1t_2} + \frac{3t_2^2}{9t_1t_2} \\
+3t_1t_2r_1 & = -t_1 + t_1^2t_2 + t_2^2 \\
+0 & = -3t_1t_2r_1 - t_1 + t_1^2t_2 + t_2^2 \\
+0 & = t_1^2t_2 + t_1(-3t_2r_1 - 1) + t_2^2 \\
+r_2 & = \frac{3\left(t_2+t_1^2-t_1t_2^2\right)}{-9t_1t_2} \\
+\end{align*}
+$$
+
+Ça n'égale pas du tout $t_1$. Est-ce qu'il y a une erreur, ou l'hypersurface n'est pas birationnelle?
+
+
+$$
+\begin{cases}
+x_1 = r_1(x_0 - 1) \\
+x_2 = r_2(x_0 - 1) \\
+x_0^3 - x_1^3 + x_2^n + 3x_0x_1x_2 = 1 \\
 \end{cases}
 $$
 
 $$
 \begin{align*}
-x_0^3 + (t_1^3-t_2^3)(x_0 - 1)^3 - 3t_1t_2x_0(x_0-1)^2 = 1 \\
+x_0^3 + (-r_1^3+r_2^3)(x_0 - 1)^3 + 3r_1r_2x_0(x_0-1)^2 & = 1 \\
+x_0^3 + (-r_1^3+r_2^3)(x_0 - 1)^3 + 3r_1r_2x_0(x_0-1)^2 -1 & = 0 \\
+(x_0-1)(x_0^2+x_0+1+(-r_1^3+r_2^3)(x_0-1)^2+3r_1r_2x_0(x_0-1)) & = 0 \\
+x_0^2+x_0+1+(-r_1^3+r_2^3)(x_0-1)^2+3r_1r_2x_0(x_0-1) & = 0 \\
+x_0^2+x_0+1+(-r_1^3+r_2^3)(x_0^2-2x_0+1)+3r_1r_2x_0^2-3r_1r_2x_0 & = 0 \\
+x_0^2+x_0+1+(-r_1^3+r_2^3)x_0^2-(-r_1^3+r_2^3)2x_0-r_1^3+r_2^3+3r_1r_2x_0^2-3r_1r_2x_0 & = 0 \\
+x_0^2+(-r_1^3+r_2^3)x_0^2+3r_1r_2x_0^2+x_0-(-r_1^3+r_2^3)2x_0-3r_1r_2x_0+1-r_1^3+r_2^3 & = 0 \\
+x_0^2(1-r_1^3+r_2^3+3r_1r_2)+x_0(1+2r_1^3-2r_2^3-3r_1r_2)+1-r_1^3+r_2^3 & = 0 \\
 \end{align*}
 $$
 
@@ -408,4 +473,4 @@ x_0^n + x_1^n + (-1)^{a_2}x_2^n + \dots + (-1)^{a_{n-1}}x_{n-1}^n + Q(x) = 1 \\
 \end{cases}
 $$
 
-On voit que $x_0 = 1$ est une solution de $P(x)=1$ donc $x_0-1$ divise $P(x)$. Pour les termes dans $Q(x)$ ça n'est pas évident, mais le théorème du multinôme de Newton nous indique que tous les termes dans $Q(x)$ on au moins un facteur $x_j = t_j(x_0-1)$. Pour la suite, je ne sais pas trop comment nous allons procéder pour l'instant, mais je pense que nous devrons procéder par induction.
+On voit que $x_0 = 1$ est une solution de $P(x)=1$ donc $x_0-1$ divise $P(x)-1$. Pour les termes dans $Q(x)$ ça n'est pas évident, mais le théorème du multinôme de Newton nous indique que tous les termes dans $Q(x)$ on au moins un facteur $x_j = t_j(x_0-1)$. Pour la suite, je ne sais pas trop comment nous allons procéder pour l'instant, mais je pense que nous devrons procéder par induction.
