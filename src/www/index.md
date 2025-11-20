@@ -176,9 +176,11 @@ $$
 
 ---
 
-## Les tuples hyper pythagoriciens
+## Points rationnels sur une hypersurface unitaire multicomplexe
 
-On peut généraliser la méthode au début de cet article pour trouver les triplets pythagoriciens dans un espace euclidien à une méthode pour trouver les $(n+1)$-uplets de nombres entiers solutions de l'équation diophantienne $\norm \xi^n = \tau^n$, où $\xi$ est un élément de $\MC_n$ à coefficients entiers et $\tau$ est un entier positif. Nous allons appeler ces tuples hyper pythagoriciens, pour les distinguer des tuples dans l'espace euclidien $\mathbb{R}^n$ qui seraient par exemple solution de l'équation diophantienne $x_0^2 + x_1^2 + \dots + x_{n-1}^2 = y^2$.
+On peut généraliser la méthode présentée dans cette vidéo de ThreeBrownOneBlue pour trouver les points rationnels sur le cercle unitaire à une méthode pour trouver les points rationnels de l'hypersurface unitaire déterminée par la pseudo-norme de $\MC_n$.
+
+, on la méthode au début de cet article pour trouver les triplets pythagoriciens dans un espace euclidien à une méthode pour trouver les $(n+1)$-uplets de nombres entiers solutions de l'équation diophantienne $\norm \xi^n = \tau^n$, où $\xi$ est un élément de $\MC_n$ à coefficients entiers et $\tau$ est un entier positif. Nous allons appeler ces tuples hyper pythagoriciens, pour les distinguer des tuples dans l'espace euclidien $\mathbb{R}^n$ qui seraient par exemple solution de l'équation diophantienne $x_0^2 + x_1^2 + \dots + x_{n-1}^2 = y^2$.
 
 La motivation derrière cette idée est que s'il existe une solution à l'équation $x^n + y^n = z^n$, alors elle sera aussi solution de $\norm \xi^n = \tau^n$.
 
@@ -404,7 +406,8 @@ On factorise l'expression quadratique en $t_1$.
 
 $$
 \begin{align*}
-0 & = (t_1 - \frac{3t_2r_1+1+\sqrt{(3t_2r_1+1)^2-4t_2t_2^2}}{2t_2})(t_1 - \frac{3t_2r_1+1+\sqrt{(3t_2r_1+1)^2-4t_2t_2^2}}{2t_2}) \\
+0 & = (t_1 - \frac{3t_2r_1+1+\sqrt{(3t_2r_1+1)^2-4t_2t_2^2}}{2t_2})(t_1 - \frac{3t_2r_1+1-\sqrt{(3t_2r_1+1)^2-4t_2t_2^2}}{2t_2}) \\
+0 & = (t_1 - \frac{3t_2r_1+1+\sqrt{9t_2^2r_1^2+6t_2r_1+1-4t_2^3}}{2t_2})(t_1 - \frac{3t_2r_1+1-\sqrt{9t_2^2r_1^2+6t_2r_1+1-4t_2^3}}{2t_2}) \\
 \end{align*}
 $$
 
