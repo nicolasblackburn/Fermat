@@ -1,15 +1,21 @@
 import sympy as sp
 
 # Définir des symboles
-n = 3
-s_xi = "\u03BE"
-xi = sp.symbols(f"{s_xi}0:{n}")
-# Définir une matrice symbolique
-M = sp.Matrix([[xi[0], xi[1], xi[2]],
-               [-xi[2], xi[0], xi[1]],
-               [-xi[1], -xi[2], xi[0]]])
-print(sp.latex(M.det()))
-print(sp.latex(M**3))
+def M(n):
+  s_xi = "\u03BE"
+  xi = sp.symbols(f"{s_xi}0:{n}")
+  M = sp.zeros(n, n)
+  for i in range(n):
+    for j in range(n):
+      if j < i:
+        M[i, j] = -xi[(j - i + n) % n]
+      else:
+        M[i, j] = xi[(j - i + n) % n]
+  return M
+def printM(n):
+  print("\\lVert\\xi\\rVert=\\sqrt[{}]{{".format(n)+sp.latex(M(n).det())+"}")
+  print("M(\\xi)^{}=".format(n)+sp.latex(M(n)**n))
+printM(4)
 
 def M(n):
   s_xi = "\u03BE"
@@ -22,7 +28,13 @@ def M(n):
       else:
         M[i, j] = xi[(j - i + n) % n]
   return M
-print(M(4).det())
+print(sp.latex(M(1)))
+print(sp.latex(M(2)))
+print(sp.latex(M(3)))
+print(sp.latex(M(4)))
+print(sp.latex(M(5)))
+print(sp.latex(M(6)))
+print(sp.latex(M(7)))
 
 # p0 = (1, 0)
 # p1 = (x1, y1)
@@ -92,4 +104,20 @@ def x2(a, b, c):
   return 3*(a**2*c + a*b**2 - b*c**2)
 
 
+# Variables
+u, v = sp.symbols('u v')
+x, z = sp.symbols('x z')
+# Définition du dénominateur D et des numérateurs A, B
+D = u**3 + 6*u*v - v**3 - 1
+A = u**2*v - u + v**2
+B = -u**2 + u*v**2 - v
+# Équations x = 3A/D  et z = 3B/D   <=>   x*D - 3A = 0,  z*D - 3B = 0
+P1 = x*D - 3*A
+P2 = z*D - 3*B
 
+R1 = sp.resultant(P1, P2, v)   # polynomial in u,x,z
+R1_simpl = sp.factor(R1)
+print(R1_simpl)
+
+R2 = sp.resultant(R1_simpl, sp.diff(R1_simpl, u), u)
+print(sp.factor(R2))
